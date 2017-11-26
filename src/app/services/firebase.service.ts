@@ -8,7 +8,7 @@ export class FirebaseService {
     public afAuth: AngularFireAuth
   ) { }
 
-
+//logins in the user
   login(email:string, password:string){
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
