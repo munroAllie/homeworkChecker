@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   {
     this.firebaseSerice.login(this.email,this.password)
     .then( (user) => {
-      console.log("This is goog:"+ user);
+      console.log("This is good:"+ user);
     })
     .catch( (e) => {
       console.log("This is the error: "+ e);
