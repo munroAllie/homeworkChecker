@@ -5,7 +5,7 @@ import { FormsModule }   from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CanActivate, RouterModule, Routes } from '@angular/router';
-import { FlashMessagesModule } from 'angular2-flash-messages'
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -36,7 +36,6 @@ const firebaseConfig ={
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
