@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { userInfo } from 'os';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 

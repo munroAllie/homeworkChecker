@@ -10,6 +10,13 @@
             <input type="password" class="form-control" [(ngModel)]="password" name ="password" required>
             <br>
             <button type="submit" class="btn btn-lg btn-primary btn-block" >Login</button>
+          
+          </form>
+
+          <form (submit)="gotoRegister()" class="form-signin">
+ 
+            <button type="submit" class="btn btn-lg btn-primary btn-block" >Register</button>
+
           </form>
        </div>
       </div>

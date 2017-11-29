@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CanActivate, RouterModule, Routes } from '@angular/router';
 
@@ -10,10 +11,12 @@ import { CanActivate, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const appRoutes:Routes =[
   { path: '', component: DashboardComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent}
 ]
 
 const firebaseConfig ={
@@ -29,13 +32,15 @@ const firebaseConfig ={
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
