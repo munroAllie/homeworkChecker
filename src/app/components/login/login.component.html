@@ -1,18 +1,20 @@
 <div class="loginWrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 ">
-        <div class="card">
+      <div class="col-md-12">
+        <div class="card register-card"> 
+          <div class="logo">
+            <div class="text-center">HOMEWORK CHECKER</div>
+          </div>
           <form (submit)="onSubmit()" class="form-signin">
             <label for="inputEmail">Email address</label>
             <input type="email"  class="form-control" [(ngModel)]="email" name ="email" required>
             <label for="inputPassword">Password</label>
             <input type="password" class="form-control" [(ngModel)]="password" name ="password" required>
             <br>
-            <button type="submit" class="btn btn-lg btn-primary btn-block" >Login</button>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
           </form>
       </div>
       </div>
-    </div>
-  </div>
+    </div>  
 </div>
