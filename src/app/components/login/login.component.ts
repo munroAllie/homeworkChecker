@@ -1,6 +1,5 @@
 import { FirebaseService } from '../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
-import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
 import { Router } from '@angular/router';
 
 
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private firebaseSerice:FirebaseService,
-    private flashMessagesService:FlashMessagesService,
     private router:Router
  
   ) { }
@@ -27,13 +25,16 @@ export class LoginComponent implements OnInit {
   {
     this.firebaseSerice.login(this.email,this.password)
     .then( (user) => {
-      this.flashMessagesService.show('You are logged in as '+ user.email, {cssClass:'alert-success', timeout:4000});
+      
       this.router.navigate(["/"]); 
     })
     .catch( (e) => {
-      this.flashMessagesService.show(e.message, {cssClass:'alert-danger', timeout:4000});
+ 
       this.router.navigate(["login"]); 
     });
+  }
+  gotoRegister(){
+    this.router.navigate(["register"]); 
   }
 
 }
