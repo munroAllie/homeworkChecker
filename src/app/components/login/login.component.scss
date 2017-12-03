@@ -3,3 +3,40 @@
     height: 100vh;
     background: linear-gradient(0deg, #52B678 0%, #8FC7AF 100%);
 }
+.register-card {
+    margin-top: 105px;
+    padding: 2em;
+}
+h1.logoText {
+    height: 58px;	
+    width: 547px;	
+    color: #616161;	
+    font-family: Helvetica;	
+    font-size: 32px;	
+    font-weight: bold;	
+    line-height: 58px;
+}
+.logo-container {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 100%;
+    margin: 0 auto;
+    margin-top: -85px
+}
+.logo {
+    display: block;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-right: 17px;
+}
+.logo-text {	
+    color: #616161;	
+    font-family: Helvetica;
+    font-size: 2.25em;	
+    font-weight: bold;	
+    margin: 0 auto;
+    margin-top: -65px;
+}
+
