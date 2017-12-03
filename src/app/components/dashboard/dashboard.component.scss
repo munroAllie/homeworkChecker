@@ -1,0 +1,28 @@
+@import '../../../styles.scss';
+
+nav.navbar {
+    background: $primary;
+}
+
+.dashboard-wrapper {
+    background-color: $light-gray;
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-controls {
+    .btn {
+        display: inline-block;
+        margin-top: 0;
+    }
+}
+
+span.label {
+    color: $dark-gray;	
+    color: $dark-gray;
+    font-family: Helvetica;	
+    font-size: 24px;
+    margin:  .5em .25em;
+    padding: 0px;
+    text-transform: capitalize;
+}

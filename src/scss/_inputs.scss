@@ -6,7 +6,9 @@
     background-color: $light-gray;	
     color: $dark-gray;	
     font-family: Helvetica;	
+    margin: .25em;
 }
+
 .form-control::placeholder {
     color: $dark-gray;
 }
@@ -19,14 +21,20 @@
     background-color: $light-gray;
     i {
         color: $primary;
-    }
+    } //i
 }
 form.form-signin {
     label { 
         display: none
     }
-    
 }
+
+.no-label {
+    label {
+            display: none;
+    }
+}
+    
 span.input-group-addon {
     background-color: transparent;
     border: none;
