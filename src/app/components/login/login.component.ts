@@ -25,11 +25,9 @@ export class LoginComponent implements OnInit {
   {
     this.firebaseSerice.login(this.email,this.password)
     .then( (user) => {
-      
       this.router.navigate(["/"]); 
     })
     .catch( (e) => {
- 
       this.router.navigate(["login"]); 
     });
   }
