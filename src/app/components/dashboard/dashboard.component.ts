@@ -38,4 +38,9 @@ isLoggedIn:boolean //Holds the booleane for if the user is logged in
     })
   }
 
+  AddStudent()
+  {
+    this.router.navigate(["addStudent"]);
+  }
+
 }

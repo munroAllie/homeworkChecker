@@ -12,11 +12,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 
 const appRoutes:Routes =[
   { path: '', component: DashboardComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'addStudent', component: AddStudentComponent}
 ]
 
 const firebaseConfig ={
@@ -33,7 +35,8 @@ const firebaseConfig ={
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,

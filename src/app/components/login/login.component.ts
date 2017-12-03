@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/"]); 
     })
     .catch( (e) => {
- 
+      
       this.router.navigate(["login"]); 
     });
   }
