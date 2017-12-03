@@ -2,11 +2,12 @@
   <div class="container">
     <div class="row ">
       <div class="col-md-8 offset-sm-2">
-        <div class="card register-card"> 
+        <div class="card card-form"> 
           <div class="logo-container text-centered">
             <img class="img-fluid logo"src="assets/images/logo.png" alt="">
           </div>
           <div class="logo-text">HOMEWORK CHECKER</div>
+          <h2 class=" text-center form-header">Login</h2>
           <form (submit)="onSubmit()" class="form-signin">
 
               <div class="input-group">
@@ -24,15 +25,11 @@
                   </span>
                   <input type="password" class="form-control" [(ngModel)]="password" placeholder ="Password" name ="password" required>
               </div>
-            <br>
             <button type="submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
           </form>
-
-          <form (submit)="gotoRegister()" class="form-signin">
- 
-            <button type="submit" class="btn btn-lg btn-primary btn-block" >Register</button>
-
-          </form>
+            <div class="btn btn-link btn-default btn-secondary"> 
+              <a routerLink="/register">Register</a> 
+            </div>
        </div>
       </div>
     </div>  
