@@ -9,8 +9,9 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class DashboardComponent implements OnInit {
 
-isLoggedIn:boolean //Holds the booleane for if the user is logged in
+  isLoggedIn:boolean //Holds the booleane for if the user is logged in
 
+  
   constructor(
     private firebaseService:FirebaseService,
     private router:Router
@@ -25,10 +26,9 @@ isLoggedIn:boolean //Holds the booleane for if the user is logged in
         this.router.navigate(["/login"]); //Sends the user to the login page if they are not logged in.
       }
     })
+    
   }
-
-  logout()
-  {
+  logout() {
     this.firebaseService.logout()
     .then ( ()=>{
       console.log("You have been logged out") //User is sent to the login page already
@@ -37,6 +37,7 @@ isLoggedIn:boolean //Holds the booleane for if the user is logged in
       console.log(e.message);
     })
   }
+
 
   AddStudent()
   {

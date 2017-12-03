@@ -3,9 +3,14 @@
     height: 100vh;
     background: linear-gradient(0deg, #52B678 0%, #8FC7AF 100%);
 }
-.register-card {
+.card-form {
     margin-top: 105px;
     padding: 2em;
+    border-radius: 8px;
+}
+
+.form-header {
+    margin-top: 0px;
 }
 h1.logoText {
     height: 58px;	
