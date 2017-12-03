@@ -1,16 +1,29 @@
 <div class="loginWrapper">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+    <div class="row ">
+      <div class="col-md-8 offset-sm-2">
         <div class="card register-card"> 
-          <div class="logo">
-            <div class="text-center">HOMEWORK CHECKER</div>
+          <div class="logo-container text-centered">
+            <img class="img-fluid logo"src="assets/images/logo.png" alt="">
           </div>
+          <div class="logo-text">HOMEWORK CHECKER</div>
           <form (submit)="onSubmit()" class="form-signin">
-            <label for="inputEmail">Email address</label>
-            <input type="email"  class="form-control" [(ngModel)]="email" name ="email" required>
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" [(ngModel)]="password" name ="password" required>
+
+              <div class="input-group">
+                  <label for="inputEmail">Email Address</label>
+                  <span class="input-group-addon" id="basic-addon1">
+                      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  </span>
+                  <input type="email"  class="form-control" [(ngModel)]="email" name ="email" placeholder ="E-Mail" required>
+              </div>
+
+              <div class="input-group">
+                  <label for="inputEmail">Password</label>
+                  <span class="input-group-addon" id="basic-addon1">
+                      <i class="fa fa-lock fa-5" aria-hidden="true"></i>
+                  </span>
+                  <input type="password" class="form-control" [(ngModel)]="password" placeholder ="Password" name ="password" required>
+              </div>
             <br>
             <button type="submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
           </form>

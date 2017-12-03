@@ -1,0 +1,45 @@
+
+.form-control {
+    border-radius: 0px;
+    border-width: 0px;
+    border-bottom-width: 4px;
+    background-color: $light-gray;	
+    color: $dark-gray;	
+    font-family: Helvetica;	
+}
+.form-control::placeholder {
+    color: $dark-gray;
+}
+
+.form-control:focus {
+    border-radius: 0px;
+    border-width: 0px;
+    border-bottom-width: 4px;
+    border-color: $primary;
+    background-color: $light-gray;
+    i {
+        color: $primary;
+    }
+}
+form.form-signin {
+    label { 
+        display: none
+    }
+    
+}
+span.input-group-addon {
+    background-color: transparent;
+    border: none;
+}
+
+.input-group { 
+    margin-top: 2em;
+}
+
+.input-group-addon i {
+    color: $dark-gray;
+    &.fa {
+        margin: 0 auto;
+        font-size: 1.25em;
+    }
+}
