@@ -37,4 +37,11 @@ export class DashboardComponent implements OnInit {
       console.log(e.message);
     })
   }
+
+
+  AddStudent()
+  {
+    this.router.navigate(["addStudent"]);
+  }
+
 }
