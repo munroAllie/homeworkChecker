@@ -8,9 +8,10 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  isLoggedIn:boolean //Holds the booleane for if the user is logged in
-
+  editMode:boolean;
+  isLoggedIn:boolean; //Holds the booleane for if the user is logged in
+  firstName:string;
+  lastName:string;
   
   constructor(
     private firebaseService:FirebaseService,
@@ -38,10 +39,15 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  addStudent(){
+        this.firebaseService.addStudent(this.firstName,this.lastName);
+        this.firstName = null;
+        this.lastName = null;
+  }
+    
 
-  AddStudent()
-  {
-    this.router.navigate(["addStudent"]);
+  toggleEditMode(){
+    this.editMode = !this.editMode;
   }
 
 }
