@@ -13,6 +13,8 @@ import { LoginComponent } from './components/login/login.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
+import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.component';
+import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 
 const appRoutes:Routes =[
   { path: '', component: DashboardComponent},
@@ -36,7 +38,9 @@ const firebaseConfig ={
     LoginComponent,
     DashboardComponent,
     RegisterComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    SideNavBarComponent,
+    TopNavBarComponent
   ],
   imports: [
     BrowserModule,
