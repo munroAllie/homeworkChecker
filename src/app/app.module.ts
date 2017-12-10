@@ -15,9 +15,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.component';
 import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 const appRoutes:Routes =[
-  { path: '', component: DashboardComponent},
+  { path: 'mainPage', component: MainPageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'addStudent', component: AddStudentComponent}
@@ -40,7 +41,8 @@ const firebaseConfig ={
     RegisterComponent,
     AddStudentComponent,
     SideNavBarComponent,
-    TopNavBarComponent
+    TopNavBarComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

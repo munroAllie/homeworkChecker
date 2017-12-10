@@ -33,7 +33,7 @@ private password:string;
       console.log("User has been added to authentication")
       //add user to database
         this.firebaseService.addUser(<string>res,this.username,this.email,this.password);
-        this.router.navigate(["/"]);
+        this.router.navigate(["/mainPage"]);
        
     })
     .catch( (err)=> {
