@@ -21,7 +21,8 @@ const appRoutes:Routes =[
   { path: 'mainPage', component: MainPageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'addStudent', component: AddStudentComponent}
+  { path: 'addStudent', component: AddStudentComponent},
+  { path: '',   redirectTo: '/mainPage', pathMatch: 'full' },
 ]
 
 const firebaseConfig ={

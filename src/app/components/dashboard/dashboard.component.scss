@@ -1,13 +1,11 @@
 @import '../../../styles.scss';
 
-nav.navbar {
-    background: $primary;
-}
-
 .dashboard-wrapper {
     background-color: $light-gray;
-  //  width: 100%;
     height: 100vh;
+    width: calc(100% - 200px);
+    overflow: hidden;
+    float: right;
 }
 
 .form-controls {
