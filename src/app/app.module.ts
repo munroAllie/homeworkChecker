@@ -15,12 +15,13 @@ import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.comp
 import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AddstudentComponent } from './components/addstudent/addstudent.component';
+import { DashboardComponent} from './components/dashboard/dashboard.component';
 
 const appRoutes:Routes =[
   { path: 'mainPage', 
     component: MainPageComponent,
     children: [
-      {path: '', component: MainPageComponent},
+      {path: '', component: DashboardComponent},
       {path:'addstudent', component: AddstudentComponent}
       ]
   },
@@ -45,7 +46,8 @@ const firebaseConfig ={
     SideNavBarComponent,
     TopNavBarComponent,
     MainPageComponent,
-    AddstudentComponent
+    AddstudentComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
