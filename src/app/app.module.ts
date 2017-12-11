@@ -10,13 +10,12 @@ import { CanActivate, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { RegisterComponent } from './components/register/register.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
+import { AuthService } from './services/auth.service';
 
 const appRoutes:Routes =[
   { path: '', component: DashboardComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
   { path: 'addStudent', component: AddStudentComponent}
 ]
 
@@ -34,7 +33,6 @@ const firebaseConfig ={
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent,
     AddStudentComponent
   ],
   imports: [
@@ -46,7 +44,7 @@ const firebaseConfig ={
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    FirebaseService
+    FirebaseService, AuthService
   ],
   bootstrap: [AppComponent]
 })
