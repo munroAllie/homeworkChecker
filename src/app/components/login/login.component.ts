@@ -21,17 +21,14 @@ export class LoginComponent implements OnInit {
  
   ) {
     this.authService.isAuthenticated().subscribe(
-      success =>{ 
-      if(success)
-      {
-        this.router.navigate(['']);
-      }
-    })
-   }
+      success => { 
+      if(success) {
+        this.router.navigate(['mainPage']);
+        }
+      })
+    }
   ngOnInit() {
   }
-
-  
   loginWithGoogle(){
     this.authService.loginWithGoogle();
   }

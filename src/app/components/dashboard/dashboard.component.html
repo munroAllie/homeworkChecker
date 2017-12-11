@@ -1,57 +1,30 @@
-
-<nav class="navbar">
-    <a class="navbar-brand" href="#">
-      <img src="../assets/images/Brand.png" class="d-inline-block align-top" alt="">
-    </a>
-    <div id="navbarNav">
-      <div class="container">
-          <div class="btn btn-nav" (click)=logout()>
-          <i class="fa fa-sign-out" aria-hidden="true"></i>
-          Logout</div>
-      </div>  
-    </div>
-  </nav>
-  <div class="dashboard-wrapper">
 <div class="container">
-    <div class="row">
-      <div class="col-sm-10">
-        <h3>Students</h3>
-       <div class="seperator"></div>
-        <div class="card" *ngFor ="let student of students | async">
-          <div class="container">
-            <span class="label">{{student.FirstName}}</span>
-            <span class="label">{{student.LastName}}</span>
-          </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <h3>Students</h3>
+      <div class="seperator"></div>
+      <div class="card" *ngFor ="let student of students | async">
+        <div class="container">
+          <span class="label">{{student.FirstName}}</span>
+          <span class="label">{{student.LastName}}</span>
         </div>
-        <div *ngIf="editMode" class="card">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="input-group no-label">
-                    <label for="firstname">First Name</label>
-                    <input type="firstname"  class="form-control" [(ngModel)]="firstName" name ="firstname" placeholder ="First Name" required>
-                    <label for="lastname">Last Name</label>
-                    <input type="lastname"  class="form-control" [(ngModel)]="lastName" name ="lastname" placeholder ="Last Name" required>
-                </div>
+      </div>
+      <div *ngIf="editMode" class="card">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="input-group no-label">
+                  <label for="firstname">First Name</label>
+                  <input type="firstname"  class="form-control" [(ngModel)]="firstName" name ="firstname" placeholder ="First Name" required>
+                  <label for="lastname">Last Name</label>
+                  <input type="lastname"  class="form-control" [(ngModel)]="lastName" name ="lastname" placeholder ="Last Name" required>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="form-controls pull-right">
-          <div  *ngIf="!editMode" (click)="toggleEditMode()" class="btn btn-primary">
-            Add Student<i class="fa fa-plus-square" aria-hidden="true"></i>
-          </div>
-          <div *ngIf="editMode" (click)="toggleEditMode()" class="btn btn-danger">
-            Cancel
-            <i class="fa fa-ban" aria-hidden="true"></i>
-          </div>
-          <div *ngIf="editMode" (click)="addStudent()" class="btn btn-primary">
-            Save
-            <i class="fa fa-floppy-o" aria-hidden="true"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 

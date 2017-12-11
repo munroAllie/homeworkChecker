@@ -1,3 +1,4 @@
+import { componentFactoryName } from '@angular/compiler/public_api';
 import { FirebaseService } from './services/firebase.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,14 +10,23 @@ import { CanActivate, RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AddStudentComponent } from './components/add-student/add-student.component';
 import { AuthService } from './services/auth.service';
+import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.component';
+import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { AddstudentComponent } from './components/addstudent/addstudent.component';
 
 const appRoutes:Routes =[
-  { path: '', component: DashboardComponent},
+  { path: 'mainPage', 
+    component: MainPageComponent,
+    children: [
+      {path: '', component: MainPageComponent},
+      {path:'addstudent', component: AddstudentComponent}
+      ]
+  },
   { path: 'login', component: LoginComponent},
-  { path: 'addStudent', component: AddStudentComponent}
+  { path: 'addStudent', component: AddstudentComponent},
+  { path: '',   redirectTo: '/mainPage', pathMatch: 'full' },
 ]
 
 const firebaseConfig ={
@@ -32,8 +42,10 @@ const firebaseConfig ={
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-    AddStudentComponent
+    SideNavBarComponent,
+    TopNavBarComponent,
+    MainPageComponent,
+    AddstudentComponent
   ],
   imports: [
     BrowserModule,

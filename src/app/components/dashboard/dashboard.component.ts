@@ -47,9 +47,5 @@ export class DashboardComponent implements OnInit {
       if(val != null)
       this.students = this.firebaseService.getStudents(val.uid).valueChanges();
     })
-  }
-  logout(){
-    this.authService.logout();
-  }
-  
+  }  
 }
