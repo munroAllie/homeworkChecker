@@ -1,7 +1,10 @@
+import { print } from 'util';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -19,31 +22,13 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private firebaseService:FirebaseService,
+    private authService:AuthService,
     private router:Router
   ) {}
-
   ngOnInit() {
-
-    //Checked to see if the user is logged in. 
-    this.firebaseService.isLoggedIn().subscribe((val)=>{
-      this.isLoggedIn = val;
-      //If they aren't then they are sent to login page
-      if(!val)
-      {
-        this.router.navigate(["/login"]);
-      }
-    })
-    //Grabs the list of student on initilize
-    this.getStudents();
- }
-
-    //Logs the user out when the logout button is clicked
-  logout() {
-    this.firebaseService.logout()
-    .catch ( (e)=>{
-      console.log(e.message); //Diplays any errors when trying to log out
-    })
   }
+    //Logs the user out when the logout button is clicked
+
     //Adds the student to the database under the firstName, lastName and also stores the teacher's Id
   addStudent(){
         this.firebaseService.addStudent(this.firstName,this.lastName);
@@ -54,7 +39,6 @@ export class DashboardComponent implements OnInit {
   toggleEditMode(){
     this.editMode = !this.editMode;
   }
-
     //Retrives the student list by sending the teacher ID as a parameter when searching the database.
   getStudents()
   {
@@ -63,6 +47,5 @@ export class DashboardComponent implements OnInit {
       if(val != null)
       this.students = this.firebaseService.getStudents(val.uid).valueChanges();
     })
-  }
-  
+  }  
 }

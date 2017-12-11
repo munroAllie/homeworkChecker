@@ -4,15 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CanActivate, RouterModule, Routes } from '@angular/router';
 
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import {DashboardComponent} from './components/dashboard/dashboard.component';
-import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from './services/auth.service';
 import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.component';
 import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -22,12 +20,12 @@ const appRoutes:Routes =[
   { path: 'mainPage', 
     component: MainPageComponent,
     children: [
-      {path: '', component: DashboardComponent},
+      {path: '', component: MainPageComponent},
       {path:'addstudent', component: AddstudentComponent}
       ]
   },
   { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'addStudent', component: AddstudentComponent},
   { path: '',   redirectTo: '/mainPage', pathMatch: 'full' },
 ]
 
@@ -44,8 +42,6 @@ const firebaseConfig ={
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-    RegisterComponent,
     SideNavBarComponent,
     TopNavBarComponent,
     MainPageComponent,
@@ -60,7 +56,7 @@ const firebaseConfig ={
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    FirebaseService
+    FirebaseService, AuthService
   ],
   bootstrap: [AppComponent]
 })

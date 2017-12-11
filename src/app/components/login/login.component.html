@@ -7,29 +7,12 @@
             <img class="img-fluid logo"src="assets/images/logo.png" alt="">
           </div>
           <div class="logo-text">HOMEWORK CHECKER</div>
-          <h2 class=" text-center form-header">Login</h2>
-          <form (submit)="onSubmit()" class="form-signin">
-
-              <div class="input-group">
-                  <label for="inputEmail">Email Address</label>
-                  <span class="input-group-addon" id="basic-addon1">
-                      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  </span>
-                  <input type="email"  class="form-control" [(ngModel)]="email" name ="email" placeholder ="E-Mail" required>
-              </div>
-
-              <div class="input-group">
-                  <label for="inputEmail">Password</label>
-                  <span class="input-group-addon" id="basic-addon1">
-                      <i class="fa fa-lock fa-5" aria-hidden="true"></i>
-                  </span>
-                  <input type="password" class="form-control" [(ngModel)]="password" placeholder ="Password" name ="password" required>
-              </div>
-            <button type="submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
-          </form>
-            <div class="btn btn-link btn-default btn-secondary"> 
-              <a routerLink="/register">Register</a> 
+          <div class="googleSignIn">
+            <div class="icon-wrapper">
+              <img id="googleIcon" src="../../assets/images/google-icon.svg" alt="">
             </div>
+            <div class="googleText" (click)="loginWithGoogle()">Sign in with Google</div>   
+          </div>  
        </div>
       </div>
     </div>  
