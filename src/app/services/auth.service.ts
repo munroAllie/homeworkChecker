@@ -22,7 +22,8 @@ export class AuthService {
       
     }
     loginWithGoogle(){
-      return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    
     }
 
     isAuthenticated() :Observable<boolean> {

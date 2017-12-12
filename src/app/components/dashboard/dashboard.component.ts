@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     private router:Router
   ) {}
   ngOnInit() {
+    this.getStudents();
   }
     //Logs the user out when the logout button is clicked
 
