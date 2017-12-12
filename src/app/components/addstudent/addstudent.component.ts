@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addstudent.component.scss']
 })
 export class AddstudentComponent implements OnInit {
-private firstName:string;
-private lastName:string;
+private firstName:string = "";
+private lastName:string = "";
 private hasChanged: boolean = false;
+
 
   constructor(
     private firebaseService:FirebaseService
@@ -25,7 +26,6 @@ private hasChanged: boolean = false;
     this.lastName = null;
   }
   addStudent(){
-    
     this.firebaseService.addStudent(this.firstName,this.lastName);
     this.clearFields();
   }

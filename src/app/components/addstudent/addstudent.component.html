@@ -1,25 +1,52 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 card offset-sm-2">
-      <form class="form-signin"  autocomplete=off>
-          <h2 class="form-signin-heading">Add Student</h2>
-          <div class="row">
+      <form novalidate autocomplete=off>
+        <h2 class="form-signin-heading">Add Student</h2>
+        <div class="row">
           <div class="col-sm-6"> 
             <h5>First Name</h5>
             <label for="First Name">First Name</label>
-            <input type="text"  class="form-control" [(ngModel)]="firstName" name ="firstName" autocomplete="new-password" autocomplete="off" required>
+            <input 
+            type="text"  
+            class="form-control" 
+            #studentFirstName = "ngModel"
+            [ngClass] ="{'is-invalid':studentFirstName.errors?.required && studentFirstName.touched}"
+            [(ngModel)]="firstName" 
+            name ="firstName" 
+            autocomplete="new-password" 
+            autocomplete="off" 
+            required>
+            <div class="row">
+              <div *ngIf="studentFirstName.errors?.required &&studentFirstName.touched" class="col-sm-12 text-danger">
+                First Name is Required
+              </div>
+            </div>
           </div>
           <div class="col-sm-6">
             <h5>Last Name</h5>
             <label for="Last Name">Last Name</label>
-            <input type="text" class="form-control" [(ngModel)]="lastName" name ="lastName" autocomplete="new-password" autocomplete="off"required>
+            <input type="text"
+             class="form-control" 
+             #studentLastName = "ngModel"
+             [ngClass] ="{'is-invalid':studentLastName.errors?.required && studentLastName.touched}"
+             [(ngModel)]="lastName" 
+             name ="lastName"
+             autocomplete="new-password" 
+             autocomplete="off"
+             required>
+             <div class="row">
+                <div *ngIf="studentLastName.errors?.required &&studentLastName.touched" class="col-sm-12 text-danger">
+                  Last Name is Required
+                </div>
+              </div>
           </div>
         </div>
       </form>
     </div>
   </div>
   <br>
-  <div class="row">
+  <div class="row" *ngIf="firstName != '' && lastName != ''">
     <div class="col-sm-2 offset-sm-5">
         <button (click)="addStudent()" class="btn btn-lg btn-primary btn-block" >Save</button>
     </div>
