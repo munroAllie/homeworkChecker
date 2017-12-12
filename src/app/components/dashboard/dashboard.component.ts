@@ -46,7 +46,8 @@ export class DashboardComponent implements OnInit {
     this.firebaseService.afAuth.authState.subscribe( (val)=>
     {
       if(val != null)
-      this.students = this.firebaseService.getStudents(val.uid).valueChanges();
+      this.students = this.firebaseService.getStudents(val.uid).valueChanges()
+     
     })
   }  
 }

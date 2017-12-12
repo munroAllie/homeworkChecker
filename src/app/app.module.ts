@@ -24,7 +24,7 @@ const appRoutes:Routes =[
     children: [
       {path: '', component: DashboardComponent},
       {path:'addstudent', component: AddstudentComponent},
-      {path:'editstudent/:id', component: EditstudentComponent}
+      {path:'editstudent/:id1/:id2', component: EditstudentComponent}
       ]
   },
   { path: 'login', component: LoginComponent},

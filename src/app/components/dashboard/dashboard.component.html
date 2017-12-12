@@ -6,7 +6,7 @@
       <div class="card student-card" *ngFor ="let student of students | async">
         <div class="container">
             <div
-            [routerLink]="['./editstudent', student.FirstName]">{{student.FirstName}} {{student.LastName}}
+            [routerLink]="['./editstudent', student.FirstName, student.LastName]">{{student.FirstName}} {{student.LastName}}
           </div>
         </div>
       </div>
