@@ -23,11 +23,11 @@ const appRoutes:Routes =[
     component: MainPageComponent,
     children: [
       {path: '', component: DashboardComponent},
-      {path:'addstudent', component: AddstudentComponent}
+      {path:'addstudent', component: AddstudentComponent},
+      {path:'editstudent/:id', component: EditstudentComponent}
       ]
   },
   { path: 'login', component: LoginComponent},
-  { path: 'addStudent', component: AddstudentComponent},
   { path: '',   redirectTo: '/mainPage', pathMatch: 'full' },
 ]
 

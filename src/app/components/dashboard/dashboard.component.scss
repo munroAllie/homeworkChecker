@@ -24,3 +24,20 @@ span.label {
     padding: 0px;
     text-transform: capitalize;
 }
+
+.student-card{
+    color: #000000;	
+    font-family: Helvetica;	
+    font-size: 20px;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff;
+}
+
+.student-card:hover{
+    border-style: solid;
+    border-width: 1px;
+    border-color: $dark-gray;
+    transition-duration: 0.2s;
+}
