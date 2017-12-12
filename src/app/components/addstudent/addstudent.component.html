@@ -1,54 +1,78 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 card offset-sm-2">
-      <form name="addStudentForm" autocomplete=off>
-        <h2 class="form-signin-heading">Add Student</h2>
-        <div class="row">
-          <div class="col-sm-6"> 
-            <h5>First Name</h5>
-            <label for="First Name">First Name</label>
-            <input 
-            type="string"  
-            class="form-control" 
-            [(ngModel)]="firstName"
-            name ="firstName" 
-            #studentFirstName ="ngModel"
-            autocomplete="new-password" 
-            autocomplete="off" 
-            ng-pattern="/^[a-zA-Z\s]*$/"
-            required>
-            <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
-                <div *ngIf='studentFirstName.errors.required' class="col-sm-12 text-danger">
-                  First Name is required
+    <div class="title">
+      Add Student
+    </div>
+  </div>  
+  <div class="row">
+    <div class="addStudentWrapper col-sm-6">
+      <div class=" col-sm-12 card">
+        <div class="card-container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="required text-right"><font color="red">*</font>Required
                 </div>
-                <div *ngIf='studentFirstName.errors.pattern' class="col-sm-12 text-danger">
-                    First Name must not contain numbers
-                  </div>
+              </div>
             </div>
-
-
-          </div>
-       
-
-          <div class="col-sm-6">
-            <h5>Last Name</h5>
-            <label for="Last Name">Last Name</label>
-            <input type="text"
-             class="form-control" 
-             [(ngModel)]="lastName" 
-             name ="lastName"
-             autocomplete="new-password" 
-             autocomplete="off"
-             required>
-          </div>
+            <div class="seperator">
+            </div>
+          <form name="addStudentForm" autocomplete=off>
+          <div class="row">
+            <div class="col-sm-6"> 
+              <div class="input-title">First Name<font color="red">*</font></div>
+              <input 
+              type="string"  
+              class="form-control" 
+              [(ngModel)]="firstName"
+              name ="firstName" 
+              #studentFirstName ="ngModel"
+              autocomplete="new-password" 
+              autocomplete="off" 
+              pattern="/^[a-zA-Z\s]*$/"
+              required>
+              <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
+                  <div *ngIf='studentFirstName.errors.required' class="col-sm-12 text-danger">
+                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>First name is required
+                  </div>
+                  <div *ngIf='studentFirstName.errors.pattern' class="col-sm-12 text-danger">
+                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> First name must not contain numbers
+                    </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="input-title">Last Name<font color="red">*</font></div>
+              <input type="text"
+              class="form-control" 
+              [(ngModel)]="lastName" 
+              #studentLastName = "ngModel"
+              name ="lastName"
+              autocomplete="new-password" 
+              autocomplete="off"
+              pattern="/^[a-zA-Z\s]*$/"
+              required>
+              <div *ngIf="studentLastName.invalid && (studentLastName.dirty || studentLastName.touched)" class="row">
+                  <div *ngIf='studentLastName.errors.required' class="col-sm-12 text-danger">
+                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Last name is required
+                  </div>
+                  <div *ngIf='studentLastName.errors.pattern' class="col-sm-12 text-danger">
+                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Last name must not contain numbers
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
+      <div class="row" >
+          <div class="col-sm-12 mybutton">
+              <div (click)="addStudent()" class="submitButton">
+                <div class="buttonText">Save</div>
+                <div class="buttonIcon"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+              </div>
+          </div>
+      </div>
+
     </div>
   </div>
-  <br>
-  <div class="row" *ngIf="firstName != '' && lastName != ''">
-    <div class="col-sm-2 offset-sm-5">
-        <button (click)="addStudent()" class="btn btn-lg btn-primary btn-block" >Save</button>
-    </div>
-  </div>
-</div> <!-- /container -->
+
+</div>
