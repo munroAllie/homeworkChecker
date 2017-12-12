@@ -1,45 +1,45 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 card offset-sm-2">
-      <form novalidate autocomplete=off>
+      <form name="addStudentForm" autocomplete=off>
         <h2 class="form-signin-heading">Add Student</h2>
         <div class="row">
           <div class="col-sm-6"> 
             <h5>First Name</h5>
             <label for="First Name">First Name</label>
             <input 
-            type="text"  
+            type="string"  
             class="form-control" 
-            #studentFirstName = "ngModel"
-            [ngClass] ="{'is-invalid':studentFirstName.errors?.required && studentFirstName.touched}"
-            [(ngModel)]="firstName" 
+            [(ngModel)]="firstName"
             name ="firstName" 
+            #studentFirstName ="ngModel"
             autocomplete="new-password" 
             autocomplete="off" 
+            ng-pattern="/^[a-zA-Z\s]*$/"
             required>
-            <div class="row">
-              <div *ngIf="studentFirstName.errors?.required &&studentFirstName.touched" class="col-sm-12 text-danger">
-                First Name is Required
-              </div>
+            <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
+                <div *ngIf='studentFirstName.errors.required' class="col-sm-12 text-danger">
+                  First Name is required
+                </div>
+                <div *ngIf='studentFirstName.errors.pattern' class="col-sm-12 text-danger">
+                    First Name must not contain numbers
+                  </div>
             </div>
+
+
           </div>
+       
+
           <div class="col-sm-6">
             <h5>Last Name</h5>
             <label for="Last Name">Last Name</label>
             <input type="text"
              class="form-control" 
-             #studentLastName = "ngModel"
-             [ngClass] ="{'is-invalid':studentLastName.errors?.required && studentLastName.touched}"
              [(ngModel)]="lastName" 
              name ="lastName"
              autocomplete="new-password" 
              autocomplete="off"
              required>
-             <div class="row">
-                <div *ngIf="studentLastName.errors?.required &&studentLastName.touched" class="col-sm-12 text-danger">
-                  Last Name is Required
-                </div>
-              </div>
           </div>
         </div>
       </form>
