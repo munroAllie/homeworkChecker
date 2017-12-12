@@ -16,6 +16,7 @@ import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.compone
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AddstudentComponent } from './components/addstudent/addstudent.component';
 import { DashboardComponent} from './components/dashboard/dashboard.component';
+import { EditstudentComponent } from './components/editstudent/editstudent.component';
 
 const appRoutes:Routes =[
   { path: 'mainPage', 
@@ -47,7 +48,8 @@ const firebaseConfig ={
     TopNavBarComponent,
     MainPageComponent,
     AddstudentComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditstudentComponent
   ],
   imports: [
     BrowserModule,
