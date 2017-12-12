@@ -48,13 +48,12 @@ private teacherId:string;
       this.firebaseService.getStudents(val.uid).valueChanges().subscribe( (list)=>{
         for (var i = 0; i<list.length; i++)
         {
-          if( (list[i].FirstName ==this.id1) && (list[i].LastName == this.id2) )
-          {
-            this.studentFound =true;
-            this.firstName = list[i].FirstName;
-            this.lastName = list[i].LastName;
-            this.teacherId = list[i].Teacher;
-          }
+//          if ((list[i].FirstName == this.id1) && (list[i].LastName == this.id2)) {
+ //           this.studentFound = true;
+ //           this.firstName = list[i].FirstName;
+ //           this.lastName = list[i].LastName;
+  //          this.teacherId = list[i].Teacher;
+   //       }
         }
       })
      

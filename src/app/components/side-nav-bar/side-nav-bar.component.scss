@@ -47,3 +47,8 @@
 .nav-btn i {
     margin-right: 10px;
 }
+.active{
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color:$dark-gray;
+}
