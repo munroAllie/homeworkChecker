@@ -29,7 +29,7 @@
               #studentFirstName ="ngModel"
               autocomplete="new-password" 
               autocomplete="off" 
-              pattern="/^[a-zA-Z\s]*$/"
+              pattern="[a-zA-Z ]*"
               required>
               <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
                   <div *ngIf='studentFirstName.errors.required' class="col-sm-12 text-danger">
@@ -44,12 +44,13 @@
               <div class="input-title">Last Name<font color="red">*</font></div>
               <input type="text"
               class="form-control" 
+              [ngClass]="{'is-invalid':studentLastName.invalid&&studentLastName.touched}"
               [(ngModel)]="lastName" 
               #studentLastName = "ngModel"
               name ="lastName"
               autocomplete="new-password" 
               autocomplete="off"
-              pattern="/^[a-zA-Z\s]*$/"
+              pattern="[a-zA-Z ]*"
               required>
               <div *ngIf="studentLastName.invalid && (studentLastName.dirty || studentLastName.touched)" class="row">
                   <div *ngIf='studentLastName.errors.required' class="col-sm-12 text-danger">
@@ -64,16 +65,14 @@
           </form>
         </div>
       </div>
-      <div class="row" >
-          <div class="col-sm-12 mybutton">
+      <div *ngIf="!studentFirstName.invalid && !studentLastName.invalid" class="row" >
+          <div class="col-sm-12 mybutton ">
               <div (click)="addStudent()" class="submitButton">
                 <div class="buttonText">Save</div>
                 <div class="buttonIcon"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
               </div>
           </div>
       </div>
-
     </div>
   </div>
-
 </div>

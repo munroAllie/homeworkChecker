@@ -1,5 +1,7 @@
+import { Form } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addstudent',
@@ -13,7 +15,8 @@ private hasChanged: boolean = false;
 
 
   constructor(
-    private firebaseService:FirebaseService
+    private firebaseService:FirebaseService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -27,6 +30,8 @@ private hasChanged: boolean = false;
   }
   addStudent(){
     this.firebaseService.addStudent(this.firstName,this.lastName);
-    this.clearFields();
+    this.router.navigate(['mainPage/editstudent', this.firstName, this.lastName])
   }
+
+
 }
