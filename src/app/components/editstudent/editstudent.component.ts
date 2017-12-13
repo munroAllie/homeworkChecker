@@ -9,55 +9,46 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./editstudent.component.scss']
 })
 export class EditstudentComponent implements OnInit {
-private id1: string;
-private id2: string;
-private sub: any;
-private students: any[];
-private student: any;
-private studentFound: boolean 
-
-private firstName: string;
-private lastName:string;
-private teacherId:string;
+  private id1: string;
+  private id2: string;
+  private sub: any;
+  private studentFound: boolean
+  public firstName: string;
+  private lastName: string;
+  private teacherId: string;
+  private testing:string ="hello world"
 
   constructor(
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-   
-
   ) { }
 
   ngOnInit() {
     this.studentFound = false;
     this.sub = this.route.params.subscribe(params => {
-      this.id1 = params['id1']; // (+) converts string 'id' to a number
+      this.id1 = params['id1'];
       this.id2 = params['id2'];
-      // In a real app: dispatch action to load the details here.
-   });
+   
+    });
 
-   this.getStudents();
+    this.getStudents();
 
 
   }
 
-  getStudents()
-  {
-    this.firebaseService.afAuth.authState.subscribe( (val)=>
-    {
-      if(val != null)
-      this.firebaseService.getStudents(val.uid).valueChanges().subscribe( (list)=>{
-        for (var i = 0; i<list.length; i++)
-        {
-//          if ((list[i].FirstName == this.id1) && (list[i].LastName == this.id2)) {
- //           this.studentFound = true;
- //           this.firstName = list[i].FirstName;
- //           this.lastName = list[i].LastName;
-  //          this.teacherId = list[i].Teacher;
-   //       }
-        }
-      })
-     
+  getStudents() {
+    this.firebaseService.afAuth.authState.subscribe((val) => {
+      if (val != null)
+        this.firebaseService.getStudents(val.uid).valueChanges().subscribe((list) => {
+          for (var i = 0; i < list.length; i++) {
+            if ((this.id1 == list[i].firstName) && (this.id2 == list[i].lastName)) {
+              this.studentFound = true;
+              this.firstName = this.id1;
+              this.lastName = this.id2;
+            }
+          }
+        })
     })
-  }  
+  }
 
 }

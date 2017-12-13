@@ -6,21 +6,7 @@
       <div class="card student-card" *ngFor ="let student of students | async">
         <div class="container">
             <div
-            [routerLink]="['./editstudent', student.FirstName, student.LastName]">{{student.FirstName}} {{student.LastName}}
-          </div>
-        </div>
-      </div>
-      <div *ngIf="editMode" class="card">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="input-group no-label">
-                  <label for="firstname">First Name</label>
-                  <input type="firstname"  class="form-control" [(ngModel)]="firstName" name ="firstname" placeholder ="First Name" required>
-                  <label for="lastname">Last Name</label>
-                  <input type="lastname"  class="form-control" [(ngModel)]="lastName" name ="lastname" placeholder ="Last Name" required>
-              </div>
-            </div>
+            [routerLink]="['./editstudent', student.firstName, student.lastName]">{{student.firstName}} {{student.lastName}}
           </div>
         </div>
       </div>
