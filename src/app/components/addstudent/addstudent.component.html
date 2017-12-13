@@ -55,12 +55,12 @@
           </form>
         </div>
       </div>
-      <div *ngIf="!studentFirstName.invalid && !studentLastName.invalid" class="row">
+      <div class="row" *ngIf="!studentFirstName.invalid && !studentLastName.invalid &&studentFirstName.touched && studentLastName.touched">
         <div class="col-sm-12 mybutton ">
-          <div (click)="addStudent()" class="submitButton">
+          <div (click)="addStudent()" class="submitButton" >
             <div class="buttonText">Save</div>
             <div class="buttonIcon">
-              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
             </div>
           </div>
         </div>
