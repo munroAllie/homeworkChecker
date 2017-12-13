@@ -17,16 +17,16 @@ export class FirebaseService {
 
   //Gets the list of students from the database depending on the teacherid
   getStudents(teacherId:string) {   
-    return this.af.list<studentInfo[]>('/students/'+teacherId) as AngularFireList<studentInfo[]>; 
+    return this.af.list<studentInfo>('/students/'+teacherId) as AngularFireList<studentInfo>; 
     }
 
       //Grabs the userID of who is logged in and saves student under that ID for later.
   addStudent(firstName:string, lastName:string) {
     this.afAuth.authState.subscribe( auth =>{
       this.af.database.ref("/students").child(auth.uid).push({
-        Teacher:auth.uid,
-        FirstName:firstName,
-        LastName:lastName
+        teacher:auth.uid,
+        firstName:firstName,
+        lastName:lastName
       })
     })
   }

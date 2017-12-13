@@ -3,61 +3,51 @@
     <div class="title">
       Add Student
     </div>
-  </div>  
+  </div>
   <div class="row">
     <div class="addStudentWrapper col-sm-6">
       <div class=" col-sm-12 card">
         <div class="card-container">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="required text-right"><font color="red">*</font>Required
-                </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="required text-right">
+                <font color="red">*</font>Required
               </div>
             </div>
-            <div class="seperator">
-            </div>
+          </div>
+          <div class="seperator">
+          </div>
           <form name="addStudentForm" autocomplete=off>
-          <div class="row">
-            <div class="col-sm-6"> 
-              <div class="input-title">First Name<font color="red">*</font></div>
-              <input 
-              type="string"  
-              class="form-control" 
-              [ngClass]="{'is-invalid':studentFirstName.invalid&&studentFirstName.touched}"
-              [(ngModel)]="firstName"
-              name ="firstName" 
-              #studentFirstName ="ngModel"
-              autocomplete="new-password" 
-              autocomplete="off" 
-              pattern="[a-zA-Z ]*"
-              required>
-              <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="input-title">First Name
+                  <font color="red">*</font>
+                </div>
+                <input type="string" class="form-control" [ngClass]="{'is-invalid':studentFirstName.invalid&&studentFirstName.touched}" [(ngModel)]="firstName"
+                  name="firstName" #studentFirstName="ngModel" autocomplete="new-password" autocomplete="off" pattern="[a-zA-Z ]*"
+                  required>
+                <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
                   <div *ngIf='studentFirstName.errors.required' class="col-sm-12 text-danger">
-                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>First name is required
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>First name is required
                   </div>
                   <div *ngIf='studentFirstName.errors?.pattern' class="col-sm-12 text-danger">
-                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
-                    </div>
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="input-title">Last Name<font color="red">*</font></div>
-              <input type="text"
-              class="form-control" 
-              [ngClass]="{'is-invalid':studentLastName.invalid&&studentLastName.touched}"
-              [(ngModel)]="lastName" 
-              #studentLastName = "ngModel"
-              name ="lastName"
-              autocomplete="new-password" 
-              autocomplete="off"
-              pattern="[a-zA-Z ]*"
-              required>
-              <div *ngIf="studentLastName.invalid && (studentLastName.dirty || studentLastName.touched)" class="row">
+              <div class="col-sm-6">
+                <div class="input-title">Last Name
+                  <font color="red">*</font>
+                </div>
+                <input type="text" class="form-control" [ngClass]="{'is-invalid':studentLastName.invalid&&studentLastName.touched}" [(ngModel)]="lastName"
+                  #studentLastName="ngModel" name="lastName" autocomplete="new-password" autocomplete="off" pattern="[a-zA-Z ]*"
+                  required>
+                <div *ngIf="studentLastName.invalid && (studentLastName.dirty || studentLastName.touched)" class="row">
                   <div *ngIf='studentLastName.errors.required' class="col-sm-12 text-danger">
-                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Last name is required
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Last name is required
                   </div>
                   <div *ngIf='studentLastName.errors.pattern' class="col-sm-12 text-danger">
-                      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
                   </div>
                 </div>
               </div>
@@ -65,13 +55,15 @@
           </form>
         </div>
       </div>
-      <div *ngIf="!studentFirstName.invalid && !studentLastName.invalid" class="row" >
-          <div class="col-sm-12 mybutton ">
-              <div (click)="addStudent()" class="submitButton">
-                <div class="buttonText">Save</div>
-                <div class="buttonIcon"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
-              </div>
+      <div *ngIf="!studentFirstName.invalid && !studentLastName.invalid" class="row">
+        <div class="col-sm-12 mybutton ">
+          <div (click)="addStudent()" class="submitButton">
+            <div class="buttonText">Save</div>
+            <div class="buttonIcon">
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
