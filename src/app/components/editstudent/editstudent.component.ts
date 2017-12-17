@@ -2,6 +2,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { FirebaseService } from '../../services/firebase.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { studentInfo } from '../../Interfaces/studentInfo';
 
 @Component({
   selector: 'app-editstudent',
@@ -13,10 +14,13 @@ export class EditstudentComponent implements OnInit {
   private id2: string;
   private sub: any;
   private studentFound: boolean
-  public firstName: string;
-  private lastName: string;
-  private teacherId: string;
-  private testing:string ="hello world"
+
+  private studentInfo: studentInfo = {
+    firstName: "",
+    lastName: "",
+    teacher: "",
+    studentId: ""
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +32,6 @@ export class EditstudentComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id1 = params['id1'];
       this.id2 = params['id2'];
-   
     });
 
     this.getStudents();
@@ -38,16 +41,16 @@ export class EditstudentComponent implements OnInit {
 
   getStudents() {
     this.firebaseService.afAuth.authState.subscribe((val) => {
-      if (val != null)
+      if (val != null) {
         this.firebaseService.getStudents(val.uid).valueChanges().subscribe((list) => {
           for (var i = 0; i < list.length; i++) {
             if ((this.id1 == list[i].firstName) && (this.id2 == list[i].lastName)) {
               this.studentFound = true;
-              this.firstName = this.id1;
-              this.lastName = this.id2;
+              this.studentInfo = list[i];
             }
           }
         })
+      }
     })
   }
 
