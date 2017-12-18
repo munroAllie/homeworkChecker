@@ -72,7 +72,7 @@
             </form>
           </div>
         </div>
-        <div class="row" *ngIf="f.valid" >
+        <div class="row" *ngIf="f.valid && f.dirty" >
           <div class="col-sm-12 mybutton">
             <div (click)="saveStudent()" class="submitButton" >
               <div class="buttonText">Save</div>

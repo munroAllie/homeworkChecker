@@ -48,7 +48,6 @@ export class FirebaseService {
       this.af.database.ref("/students").child(val.uid).child(studentInfo.studentId).remove();
     })
   }
-
 }
 
   
