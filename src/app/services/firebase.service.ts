@@ -43,6 +43,11 @@ export class FirebaseService {
       this.af.database.ref("/students").child(val.uid).child(studentInfo.studentId).update(studentInfo)
     })
   }
+  deleteStudent(studentInfo:studentInfo){
+    this.afAuth.authState.subscribe((val)=>{
+      this.af.database.ref("/students").child(val.uid).child(studentInfo.studentId).remove();
+    })
+  }
 
 }
 

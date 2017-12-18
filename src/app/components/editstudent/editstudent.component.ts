@@ -3,6 +3,7 @@ import { FirebaseService } from '../../services/firebase.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { studentInfo } from '../../Interfaces/studentInfo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editstudent',
@@ -31,6 +32,7 @@ export class EditstudentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -50,6 +52,8 @@ export class EditstudentComponent implements OnInit {
             if ((this.id1 == list[i].firstName) && (this.id2 == list[i].lastName)) {
               this.studentInfo = list[i];
               this.studentFound = true; 
+              this.tempStudentInfo = this.studentInfo;
+              console.log("Values are initlized");
             }
           }
         })
@@ -62,6 +66,11 @@ export class EditstudentComponent implements OnInit {
     console.log("student Saved");
     console.log("this is the student Info:",this.studentInfo);
     console.log("this is the tempstudentInfo:",this.tempStudentInfo);
+  }
+
+  delete(){
+    this.firebaseService.deleteStudent(this.studentInfo);
+    this.router.navigate(['mainPage/']);
   }
 
 }
