@@ -38,6 +38,12 @@ export class FirebaseService {
     })
   }
 
+  updateStudent(studentInfo:studentInfo){
+    this.afAuth.authState.subscribe((val)=>{
+      this.af.database.ref("/students").child(val.uid).child(studentInfo.studentId).update(studentInfo)
+    })
+  }
+
 }
 
   

@@ -13,9 +13,15 @@ export class EditstudentComponent implements OnInit {
   private id1: string;
   private id2: string;
   private sub: any;
-  private studentFound: boolean
+  private studentFound: boolean = false;
 
   private studentInfo: studentInfo = {
+    firstName: "",
+    lastName: "",
+    teacher: "",
+    studentId: ""
+  }
+  private tempStudentInfo: studentInfo = {
     firstName: "",
     lastName: "",
     teacher: "",
@@ -33,10 +39,7 @@ export class EditstudentComponent implements OnInit {
       this.id1 = params['id1'];
       this.id2 = params['id2'];
     });
-
     this.getStudents();
-
-
   }
 
   getStudents() {
@@ -45,13 +48,20 @@ export class EditstudentComponent implements OnInit {
         this.firebaseService.getStudents(val.uid).valueChanges().subscribe((list) => {
           for (var i = 0; i < list.length; i++) {
             if ((this.id1 == list[i].firstName) && (this.id2 == list[i].lastName)) {
-              this.studentFound = true;
               this.studentInfo = list[i];
+              this.studentFound = true; 
             }
           }
         })
       }
     })
+  }
+
+  saveStudent(){
+    this.firebaseService.updateStudent(this.studentInfo);
+    console.log("student Saved");
+    console.log("this is the student Info:",this.studentInfo);
+    console.log("this is the tempstudentInfo:",this.tempStudentInfo);
   }
 
 }
