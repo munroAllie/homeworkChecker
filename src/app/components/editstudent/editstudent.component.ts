@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { studentInfo } from '../../Interfaces/studentInfo';
 import { Router } from '@angular/router';
-import {Popup} from 'ng2-opd-popup';
+
 
 @Component({
   selector: 'app-editstudent',
@@ -29,8 +29,8 @@ export class EditstudentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    private router: Router,
-    private popup:Popup
+    private router: Router
+
   ) { }
 
   ngOnInit() {
@@ -69,9 +69,13 @@ export class EditstudentComponent implements OnInit {
     if(this.form.valid)
     return true;
     else{
-      this.popup.show();
       return false;
     }
+   
+  }
+
+  launchModal(){
+    console.log("You launched the modal");
    
   }
 }

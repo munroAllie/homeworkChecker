@@ -7,7 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CanActivate, RouterModule, Routes } from '@angular/router';
-import {PopupModule} from 'ng2-opd-popup';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -63,8 +63,8 @@ const firebaseConfig ={
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot(appRoutes),
-    PopupModule.forRoot()
+    RouterModule.forRoot(appRoutes)
+ 
   ],
   providers: [
     FirebaseService, AuthService, SaveFormsGuard
