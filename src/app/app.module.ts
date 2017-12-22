@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CanActivate, RouterModule, Routes } from '@angular/router';
+import {PopupModule} from 'ng2-opd-popup';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,13 +19,18 @@ import { AddstudentComponent } from './components/addstudent/addstudent.componen
 import { DashboardComponent} from './components/dashboard/dashboard.component';
 import { EditstudentComponent } from './components/editstudent/editstudent.component';
 
+import {SaveFormsGuard} from './guards/save-forms-guard';
+
 const appRoutes:Routes =[
   { path: 'mainPage', 
     component: MainPageComponent,
     children: [
       {path: '', component: DashboardComponent},
       {path:'addstudent', component: AddstudentComponent},
-      {path:'editstudent/:id1/:id2', component: EditstudentComponent}
+      {path:'editstudent/:id1/:id2', 
+        component: EditstudentComponent,
+        canDeactivate:[SaveFormsGuard]  
+      }
       ]
   },
   { path: 'login', component: LoginComponent},
@@ -57,10 +63,11 @@ const firebaseConfig ={
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    PopupModule.forRoot()
   ],
   providers: [
-    FirebaseService, AuthService
+    FirebaseService, AuthService, SaveFormsGuard
   ],
   bootstrap: [AppComponent]
 })

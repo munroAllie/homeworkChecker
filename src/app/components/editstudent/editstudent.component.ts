@@ -1,9 +1,10 @@
 import { forEach } from '@angular/router/src/utils/collection';
 import { FirebaseService } from '../../services/firebase.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { studentInfo } from '../../Interfaces/studentInfo';
 import { Router } from '@angular/router';
+import {Popup} from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-editstudent',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./editstudent.component.scss']
 })
 export class EditstudentComponent implements OnInit {
+@ViewChild('f') form;
+
   private id1: string;
   private id2: string;
   private sub: any;
@@ -26,10 +29,12 @@ export class EditstudentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    private popup:Popup
   ) { }
 
   ngOnInit() {
+    console.log(this.form);
     this.sub = this.route.params.subscribe(params => {
       this.id1 = params['id1'];
       this.id2 = params['id2'];
@@ -60,5 +65,13 @@ export class EditstudentComponent implements OnInit {
     this.firebaseService.deleteStudent(this.studentInfo);
     this.router.navigate(['mainPage/']);
   }
-
+  areFormsSaved(){
+    if(this.form.valid)
+    return true;
+    else{
+      this.popup.show();
+      return false;
+    }
+   
+  }
 }
