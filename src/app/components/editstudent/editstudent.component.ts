@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class EditstudentComponent implements OnInit {
 @ViewChild('f') form;
+unsavedInformation: boolean = false;
 
   private id1: string;
   private id2: string;
@@ -31,15 +32,18 @@ export class EditstudentComponent implements OnInit {
     private firebaseService: FirebaseService,
     private router: Router
 
-  ) { }
+  ) { 
+    console.log(this.unsavedInformation);
+  }
 
   ngOnInit() {
-    console.log(this.form);
+    
     this.sub = this.route.params.subscribe(params => {
       this.id1 = params['id1'];
       this.id2 = params['id2'];
     });
     this.getStudents();
+    console.log(this.unsavedInformation);
   }
 
   getStudents() {
@@ -58,24 +62,27 @@ export class EditstudentComponent implements OnInit {
 
   saveStudent() {
     this.firebaseService.updateStudent(this.studentInfo);
+    this.unsavedInformation = false;
     this.router.navigate(['mainPage/']);
   }
 
   delete() {
     this.firebaseService.deleteStudent(this.studentInfo);
+    this.unsavedInformation = false;
     this.router.navigate(['mainPage/']);
   }
   areFormsSaved(){
-    if(this.form.valid)
-    return true;
-    else{
+    if(this.form.pristine){
+      this.unsavedInformation = false;
+      console.log(this.unsavedInformation);
+      return true;
+    }
+    else if(!this.form.pristine)
+    {
+      this.unsavedInformation = true;
+      console.log(this.unsavedInformation);
       return false;
     }
-   
-  }
-
-  launchModal(){
-    console.log("You launched the modal");
    
   }
 }
