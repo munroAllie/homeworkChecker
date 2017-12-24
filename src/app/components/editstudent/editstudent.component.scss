@@ -90,3 +90,38 @@
     cursor: pointer;
 
 }
+
+.modal-title{
+    height: 29px;	
+    width: auto;
+    text-align: left;	
+    color: #e9a43c;	
+    font-family: Helvetica;	
+    font-size: 24px;	
+    line-height: 29px;
+
+}
+.modal-box{
+    height: 192px;	
+    width: 361px;	
+    border-radius: 6px;	
+    background-color: #FFFFFF;	
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.modal-content-container{
+    height:100%;
+    width:100%;
+    margin-left: 17px;
+    margin-top: 12px;
+    
+
+}
+.modal-title-symbol{
+    height: 24px;	
+    width: 24px;	
+    color: #000000;	
+    font-family: FontAwesome;	
+    font-size: 24px;	
+    line-height: 24px;
+}

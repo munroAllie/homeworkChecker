@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./editstudent.component.scss']
 })
 export class EditstudentComponent implements OnInit {
-@ViewChild('f') form;
+@ViewChild('f') myForm;
 unsavedInformation: boolean = false;
 
   private id1: string;
@@ -43,7 +43,6 @@ unsavedInformation: boolean = false;
       this.id2 = params['id2'];
     });
     this.getStudents();
-    console.log(this.unsavedInformation);
   }
 
   getStudents() {
@@ -63,6 +62,7 @@ unsavedInformation: boolean = false;
   saveStudent() {
     this.firebaseService.updateStudent(this.studentInfo);
     this.unsavedInformation = false;
+    this.myForm.form.markAsPristine();
     this.router.navigate(['mainPage/']);
   }
 
@@ -71,13 +71,14 @@ unsavedInformation: boolean = false;
     this.unsavedInformation = false;
     this.router.navigate(['mainPage/']);
   }
+
   areFormsSaved(){
-    if(this.form.pristine){
+    if(this.myForm.pristine){
       this.unsavedInformation = false;
       console.log(this.unsavedInformation);
       return true;
     }
-    else if(!this.form.pristine)
+    else if(!this.myForm.pristine)
     {
       this.unsavedInformation = true;
       console.log(this.unsavedInformation);
