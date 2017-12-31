@@ -4,6 +4,9 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { studentInfo } from '../../Interfaces/studentInfo';
 import { Router } from '@angular/router';
+import {SaveFormsGuard} from '../../guards/save-forms-guard';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router/src/router_state';
 
 
 @Component({
@@ -12,12 +15,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./editstudent.component.scss']
 })
 export class EditstudentComponent implements OnInit {
-@ViewChild('f') myForm;
-unsavedInformation: boolean = false;
+  @ViewChild('f') myForm;
+  unsavedInformation: boolean = false;
 
   private id1: string;
   private id2: string;
   private sub: any;
+  private targetURL:string;
 
   private studentInfo: studentInfo = {
     firstName: "",
@@ -30,14 +34,15 @@ unsavedInformation: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    private saveFormsGuard: SaveFormsGuard
 
-  ) { 
+  ) {
     console.log(this.unsavedInformation);
   }
 
   ngOnInit() {
-    
+
     this.sub = this.route.params.subscribe(params => {
       this.id1 = params['id1'];
       this.id2 = params['id2'];
@@ -72,18 +77,26 @@ unsavedInformation: boolean = false;
     this.router.navigate(['mainPage/']);
   }
 
-  areFormsSaved(){
-    if(this.myForm.pristine){
+  areFormsSaved() {
+    if (this.myForm.pristine) {
       this.unsavedInformation = false;
-      console.log(this.unsavedInformation);
       return true;
     }
-    else if(!this.myForm.pristine)
-    {
+    else if (!this.myForm.pristine) {
       this.unsavedInformation = true;
-      console.log(this.unsavedInformation);
+      
       return false;
     }
-   
   }
+
+  cancelAndLeave() {
+    this.unsavedInformation = false;
+    this.myForm.form.markAsPristine();
+    this.router.navigate([this.targetURL]);
+  }
+
+  setTargetURL(url:RouterStateSnapshot){
+    this.targetURL= url.url;
+  }
+
 }

@@ -58,9 +58,9 @@
                     </form>
                 </div>
             </div>
-            <div class="row" *ngIf="f.valid && f.dirty">
-                <div class="col-sm-12 mybutton">
-                    <div (click)="saveStudent()" class="submitButton">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div (click)="saveStudent()" class="submitButtonDisabled float-right" [ngClass]="{submitButtonActive: f.valid && f.dirty}">
                         <div class="buttonText">Save</div>
                         <div class="buttonIcon">
                             <i class="fa fa-floppy-o" aria-hidden="true"></i>
@@ -78,21 +78,39 @@
                     </div>
                 </div>
             </div>
-
             <div *ngIf="unsavedInformation" class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-box">
                         <div class="modal-content-container">
-                            <div class="row">
-                                <div class="modal-title-symbol">
-                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <div class="modal-wrapper">
+                                <div class="row modal-header-container">
+                                    <div class="modal-title-symbol">
+                                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="modal-title">
+                                        Warning
+                                    </div>
                                 </div>
-                                <div class="modal-title">
-                                    Warning
+                                <div class="row">
+                                    <div class="modal-content-message">
+                                        You have unsaved information.
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="modal-content-message">
+                                        Are you sure you want to leave?
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div (click)="unsavedInformation=false" class="modal-button">
+                                        <div class="modal-button-cancel-text">Cancel</div>
+                                    </div>
+                                    <div class="modal-button-continue-container">
+                                        <div (click)="cancelAndLeave()" class="modal-button-continue-text">continue</div>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
