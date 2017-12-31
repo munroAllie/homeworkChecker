@@ -17,7 +17,7 @@
           </div>
           <div class="seperator">
           </div>
-          <form name="addStudentForm" autocomplete=off>
+          <form name="addStudentForm" #f="ngForm" autocomplete=off>
             <div class="row">
               <div class="col-sm-6">
                 <div class="input-title">First Name
@@ -55,12 +55,12 @@
           </form>
         </div>
       </div>
-      <div class="row" *ngIf="!studentFirstName.invalid && !studentLastName.invalid &&studentFirstName.touched && studentLastName.touched">
+      <div class="row" *ngIf="f.valid">
         <div class="col-sm-12 mybutton ">
-          <div (click)="addStudent()" class="submitButton" >
+          <div (click)="addStudent()" class="submitButton">
             <div class="buttonText">Save</div>
             <div class="buttonIcon">
-            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
             </div>
           </div>
         </div>

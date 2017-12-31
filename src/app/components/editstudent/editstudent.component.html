@@ -1,7 +1,120 @@
-
-<div *ngIf="studentFound">
- Student: {{firstName}} {{lastName}} has been found.
-</div>
-<div *ngIf="!studentFound">
-       Student not found
+<div class="container">
+    <div class="row">
+        <div class="title">
+            Edit Student
+        </div>
+    </div>
+    <div class="row">
+        <div class="editStudentWrapper col-sm-6">
+            <div class=" col-sm-12 card">
+                <div class="card-container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="studentId">
+                                Student ID: {{studentInfo.studentId}}
+                            </div>
+                            <div class="required text-right">
+                                <font color="red">*</font>Required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seperator">
+                    </div>
+                    <form name="editStudentForm" #f="ngForm" autocomplete=off>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-title">First Name
+                                    <font color="red">*</font>
+                                </div>
+                                <input type="string" class="form-control" [ngClass]="{'is-invalid':studentFirstName.invalid&&studentFirstName.touched}" [(ngModel)]="studentInfo.firstName"
+                                    name="firstName" #studentFirstName="ngModel" autocomplete="new-password" autocomplete="off"
+                                    pattern="[a-zA-Z ]*" required>
+                                <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
+                                    <div *ngIf='studentFirstName.errors.required' class="col-sm-12 text-danger">
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>First name is required
+                                    </div>
+                                    <div *ngIf='studentFirstName.errors?.pattern' class="col-sm-12 text-danger">
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-title">Last Name
+                                    <font color="red">*</font>
+                                </div>
+                                <input type="text" class="form-control" [ngClass]="{'is-invalid':studentLastName.invalid&&studentLastName.touched}" [(ngModel)]="studentInfo.lastName"
+                                    #studentLastName="ngModel" name="lastName" autocomplete="new-password" autocomplete="off"
+                                    pattern="[a-zA-Z ]*" required>
+                                <div *ngIf="studentLastName.invalid && (studentLastName.dirty || studentLastName.touched)" class="row">
+                                    <div *ngIf='studentLastName.errors.required' class="col-sm-12 text-danger">
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Last name is required
+                                    </div>
+                                    <div *ngIf='studentLastName.errors.pattern' class="col-sm-12 text-danger">
+                                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div (click)="saveStudent()" class="submitButtonDisabled float-right" [ngClass]="{submitButtonActive: f.valid && f.dirty}">
+                        <div class="buttonText">Save</div>
+                        <div class="buttonIcon">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 mybutton">
+                    <div (click)="delete()" class="deleteButton">
+                        <div class="buttonText">Delete</div>
+                        <div class="buttonIcon">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="unsavedInformation" class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-box">
+                        <div class="modal-content-container">
+                            <div class="modal-wrapper">
+                                <div class="row modal-header-container">
+                                    <div class="modal-title-symbol">
+                                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="modal-title">
+                                        Warning
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="modal-content-message">
+                                        You have unsaved information.
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="modal-content-message">
+                                        Are you sure you want to leave?
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div (click)="unsavedInformation=false" class="modal-button">
+                                        <div class="modal-button-cancel-text">Cancel</div>
+                                    </div>
+                                    <div class="modal-button-continue-container">
+                                        <div (click)="cancelAndLeave()" class="modal-button-continue-text">continue</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
