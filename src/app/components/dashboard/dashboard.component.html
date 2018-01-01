@@ -1,17 +1,35 @@
+
 <div class="container">
   <div class="row">
     <div class="col-sm-10">
       <h3>Students</h3>
       <div class="seperator"></div>
-      <div class="card student-card" *ngFor ="let student of students | async">
-        <div class="container">
-            <div
-            [routerLink]="['./editstudent', student.firstName, student.lastName]">{{student.firstName}} {{student.lastName}}
+      <form #f="ngForm">
+        <div class="card student-card" *ngFor="let student of students|async">
+          <div class="container">
+            <div class="row">
+              <div [routerLink]="['./editstudent', student.firstName, student.lastName]">{{student.firstName}} {{student.lastName}} </div>
+              <div class="radio" ngModelGroup=status>
+                <div *ngFor="let val of status">
+                  <label>
+                    <input type="radio" [name]="student.firstName+student.lastName+'status'" ngModel [value]="val"> {{val}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-sm-12">
+          <div (click)="showForm()" class="submitButton">
+            <div class="buttonText">Submit Check</div>
+            <div class="buttonIcon">
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

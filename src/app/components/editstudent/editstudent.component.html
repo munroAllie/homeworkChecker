@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="studentId">
-                                Student ID: {{studentInfo.studentId}}
+                                Student ID: {{studentInfo.studentId}} 
                             </div>
                             <div class="required text-right">
                                 <font color="red">*</font>Required
@@ -53,6 +53,13 @@
                                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-title">Parent E-mail</div>
+                                <input type="email" class="form-control" [ngClass]="{'is-invalid':parentEmail.invalid&&parentEmail.touched}" [(ngModel)]="studentInfo.parentEmail"
+                                    name="email" #parentEmail="ngModel" autocomplete="new-password" autocomplete="off">
                             </div>
                         </div>
                     </form>

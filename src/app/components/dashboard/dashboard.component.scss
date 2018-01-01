@@ -1,5 +1,7 @@
 @import '../../../styles.scss';
-
+.container{
+    margin: 0px;
+}
 .dashboard-wrapper {
     background-color: $light-gray;
     height: 100vh;
