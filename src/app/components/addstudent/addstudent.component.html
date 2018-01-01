@@ -23,7 +23,7 @@
                 <div class="input-title">First Name
                   <font color="red">*</font>
                 </div>
-                <input type="string" class="form-control" [ngClass]="{'is-invalid':studentFirstName.invalid&&studentFirstName.touched}" [(ngModel)]="firstName"
+                <input type="string" class="form-control" [ngClass]="{'is-invalid':studentFirstName.invalid&&studentFirstName.touched}" [(ngModel)]="studentInfo.firstName"
                   name="firstName" #studentFirstName="ngModel" autocomplete="new-password" autocomplete="off" pattern="[a-zA-Z ]*"
                   required>
                 <div *ngIf="studentFirstName.invalid && (studentFirstName.dirty || studentFirstName.touched)" class="row">
@@ -39,7 +39,7 @@
                 <div class="input-title">Last Name
                   <font color="red">*</font>
                 </div>
-                <input type="text" class="form-control" [ngClass]="{'is-invalid':studentLastName.invalid&&studentLastName.touched}" [(ngModel)]="lastName"
+                <input type="text" class="form-control" [ngClass]="{'is-invalid':studentLastName.invalid&&studentLastName.touched}" [(ngModel)]="studentInfo.lastName"
                   #studentLastName="ngModel" name="lastName" autocomplete="new-password" autocomplete="off" pattern="[a-zA-Z ]*"
                   required>
                 <div *ngIf="studentLastName.invalid && (studentLastName.dirty || studentLastName.touched)" class="row">

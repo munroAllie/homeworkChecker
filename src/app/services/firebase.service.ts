@@ -21,14 +21,12 @@ export class FirebaseService {
   }
 
   //Grabs the userID of who is logged in and saves student under that ID for later. 
-  addStudent(firstName: string, lastName: string) {
+
+
+  addStudent(studentInfo:studentInfo) {
     this.afAuth.authState.subscribe(auth => {
-      this.af.database.ref("/students").child(auth.uid).push({
-        teacher: auth.uid,
-        firstName: firstName,
-        lastName: lastName
-      }).then(val => {
-        console.log(val.key);
+      this.af.database.ref("/students").child(auth.uid).push(studentInfo)
+      .then(val => {
         this.af.database.ref("/students").child(auth.uid).child(val.key).update(
           {
             studentId: val.key

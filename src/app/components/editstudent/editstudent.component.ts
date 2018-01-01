@@ -27,7 +27,11 @@ export class EditstudentComponent implements OnInit {
     firstName: "",
     lastName: "",
     teacher: "",
-    studentId: ""
+    studentId: "",
+    parentEmail: "",
+    incompleted: 0, 
+    attempted: 0,
+    completed: 0
   }
 
 
