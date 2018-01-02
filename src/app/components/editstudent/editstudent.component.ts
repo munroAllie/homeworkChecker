@@ -22,6 +22,7 @@ export class EditstudentComponent implements OnInit {
   private id2: string;
   private sub: any;
   private targetURL:string;
+  private assignments:object[];
 
   private studentInfo: studentInfo = {
     firstName: "",
@@ -42,7 +43,6 @@ export class EditstudentComponent implements OnInit {
     private saveFormsGuard: SaveFormsGuard
 
   ) {
-    console.log(this.unsavedInformation);
   }
 
   ngOnInit() {
@@ -52,6 +52,7 @@ export class EditstudentComponent implements OnInit {
       this.id2 = params['id2'];
     });
     this.getStudents();
+    
   }
 
   getStudents() {
@@ -61,12 +62,24 @@ export class EditstudentComponent implements OnInit {
           for (var i = 0; i < list.length; i++) {
             if ((this.id1 == list[i].firstName) && (this.id2 == list[i].lastName)) {
               this.studentInfo = list[i];
+              this.getAssignments();
             }
           }
         })
       }
     })
   }
+
+  getAssignments(){
+    this.firebaseService.afAuth.authState.subscribe((val)=>{
+      if(val!=null){
+        this.firebaseService.getAssignments(val.uid,this.studentInfo).valueChanges().subscribe( (list)=>{
+          this.assignments = list;
+   
+        })
+      }
+    })
+   }
 
   saveStudent() {
     this.firebaseService.updateStudent(this.studentInfo);

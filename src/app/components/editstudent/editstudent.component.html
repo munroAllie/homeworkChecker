@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="studentId">
-                                Student ID: {{studentInfo.studentId}} 
+                                Student ID: {{studentInfo.studentId}}
                             </div>
                             <div class="required text-right">
                                 <font color="red">*</font>Required
@@ -79,6 +79,29 @@
                     </div>
                 </div>
             </div>
+
+            <!--Assignments -->
+            <div class="card student-card" *ngFor="let assignment of assignments">
+                <div class="container">
+                    <div class="row">
+                    <div class="table">
+                        <thead>
+                            <tr>
+                                <th>Assignment ID</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>{{assignment.assignmentId}}</td>
+                            <td>{{assignment.AssignmentDescription}}</td>
+                            <td>{{assignment.Status}}</td>
+                        </tbody>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of assignments -->
             <div class="row">
                 <div class="col-sm-12">
                     <div (click)="saveStudent()" class="submitButtonDisabled float-right" [ngClass]="{submitButtonActive: f.valid && f.dirty}">
