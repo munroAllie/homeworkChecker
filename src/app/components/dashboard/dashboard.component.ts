@@ -16,12 +16,15 @@ import { Subscription } from 'rxjs/Subscription';
 export class DashboardComponent implements OnInit {
 
   @ViewChild('f') statusForm;
+  @ViewChild('description') description;
 
+  trackingState:boolean = false;
+  createAssignmentState:boolean = false;
   isLoggedIn: boolean; //Holds the boolean for if the user is logged in
   students: Observable<any[]>;
   status: string[] = ["incompleted", "attempted", "completed"];
   track: Subscription;
-
+  descriptionText:string = "Please type in a decription here...";
   constructor(
     private firebaseService: FirebaseService,
     private authService: AuthService,
@@ -41,10 +44,6 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  showForm() {
-    this.recordStudents()
-  }
-
   recordStudents() {
     this.track = this.students.subscribe((val) => {
       val = val as studentInfo[]
@@ -53,7 +52,7 @@ export class DashboardComponent implements OnInit {
       var status = this.statusForm.value.status[tempName];
       switch(status){
         case "incompleted":{
-          val[i].incomplete +=1;
+          val[i].incompleted +=1;
           break;
         }
         case "attempted":{
@@ -65,12 +64,31 @@ export class DashboardComponent implements OnInit {
           break;
         }
       }
-      console.log(val[i] )
       this.firebaseService.updateStudent(val[i]);
+      if(status=="")
+      status="Homework not tracked";
+      this.firebaseService.addAssignment(val[i], this.descriptionText, status);
       }
+      this.trackingState=false;
       this.track.unsubscribe();
     }
   )
+    
+  }
+
+  toggleAssignmentWindow(){
+    this.createAssignmentState =! this.createAssignmentState;
+  }
+
+  cancelAssignment(){
+    this.trackingState = false;
+    this.createAssignmentState=false;
+    //delete stored assignment data
+  }
+
+  createAssignment(){
+    this.trackingState = true;
+    this.toggleAssignmentWindow();
     
   }
 }

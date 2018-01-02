@@ -36,6 +36,18 @@ export class FirebaseService {
     })
   }
 
+  addAssignment(studentInfo:studentInfo, description:string, status: string){
+    this.afAuth.authState.subscribe(auth => {
+      console.log("Trying to add the assignment to thr student");
+      this.af.database.ref("/students").child(auth.uid).child(studentInfo.studentId).push({
+        AssignmentDescription: description,
+        Status: status
+      })
+
+      })
+    }
+  
+
   updateStudent(studentInfo: studentInfo) {
     this.afAuth.authState.subscribe((val) => {
       this.af.database.ref("/students").child(val.uid).child(studentInfo.studentId).update(studentInfo)
