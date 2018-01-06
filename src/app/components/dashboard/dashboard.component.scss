@@ -1,240 +1,33 @@
 @import '../../../styles.scss';
-.container{
-    margin: 0px;
-}
-.dashboard-wrapper {
-    background-color: $light-gray;
+
+.dashboard-background{
     height: 100vh;
-    width: calc(100% - 200px);
-    overflow: hidden;
-    float: right;
+    width: 100vw;
+    background-color: #F6F6F6;
 }
 
-.form-controls {
-    .btn {
-        display: inline-block;
-        margin-top: 0;
-    }
-}
-
-span.label {
-    color: $dark-gray;	
-    color: $dark-gray;
-    font-family: Helvetica;	
-    font-size: 24px;
-    margin:  .5em .25em;
-    padding: 0px;
-    text-transform: capitalize;
-}
-
-.student-card{
-    color: #000000;	
-    font-family: Helvetica;	
-    font-size: 20px;
-    cursor: pointer;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #ffffff;
-}
-
-.student-card:hover{
-    border-style: solid;
-    border-width: 1px;
-    border-color: $dark-gray;
-    transition-duration: 0.2s;
-}
-
-//Section
-
-@import '../../../styles.scss';
-.title{
-    height: 29px;
-    width: 143px;
-    color: #000000;
-    font-family: Helvetica;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 29px;
-    margin-left: 29px;
-}
-
-.editStudentWrapper{
-    margin-left:19px;
-
-}
-.container{
-    margin:0px;
-}
-.card-container{
-    margin:20px;
-}
-
-.input-title{
-    height: 24px;	
-    width: auto;	
-    color: #141414;	
-    font-family: Helvetica;	
-    font-size: 20px;	
-    line-height: 24px
-}
-.required{
-    height: 17px;	
-    float: right;
-    color: #000000;	
-    font-family: Helvetica;	
-    font-size: 14px;	
-    line-height: 17px;
-}
-.submitButtonDisabled{
-    height: 29px;	
-    width: 109px;	
-    text-align: center;	
-    background-color: #C0C0C0;	
-    box-shadow: 2px 2px 4px 0 #B7B7B7;
-    pointer-events: none;
-
-}
-.submitButtonActive{
-    background-color: #52B679;	
-    box-shadow: 2px 2px 4px 0 #52B679; 
-    cursor: pointer;
-    pointer-events: auto;
-}
-.buttonText{
-    height: 22px;	
-    width: 42px;	
-    color: #FFFFFF;	
-    font-family: Helvetica;	
-    font-size: 18px;	
-    line-height: 29px;
-    display: inline-block; 
-}
-.buttonIcon{
-    height: 18px;	
-    width: 16px;	
-    font-size: 18px;	
-    line-height:29px;
-    display: inline-block; 
-    margin-left:18px;
-    color: #FFFFFF;	
-}
-.form-control{
-    margin-left:0px
-}
-
-.disabled{
-    background-color: $dark-gray;
-}
-.studentId{
-    height: 24px;	
-    width: auto;;	
-    color: #000000;	
-    font-family: Helvetica;	
-    font-size: 20px;	
-    line-height: 24px;
-    float: left
-}
-.deleteButton{
-    height: 29px;	
-    width: 109px;	
-    background-color: red;	
-    box-shadow: 2px 2px 4px 0 red;
-    text-align: center;
-    cursor: pointer;
-
-}
-
-.modal-title{
-    height: 29px;	
-    width: auto;
-    text-align: left;	
-    color: #FDC228;	
-    font-family: Helvetica;	
-    font-size: 24px;	
-    line-height: 29px;
-
-}
-.modal-box{
-    height: 192px;	
-    width: 361px;	
+.dashboard-card{
+    height: 100%;	
+    width: 100vw;
     border-radius: 6px;	
     background-color: #FFFFFF;	
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.2);
+    margin-top: 21px;
+    margin-left: 15px;
+    margin-right: 34px;
+    display: inline-block;  // Makes sure the card margin only affects the card and not the background as well
 }
-
-.modal-content-container{
-    height:100%;
-    width:100%;
-    margin-left: 17px;
-    margin-top: 12px;
-    
-
+.card-container{
+    margin: 20px;
+    display: inline-block;
 }
-.modal-title-symbol{
+.card-title{
     height: 24px;	
-    width: 24px;	
-    color: #FDC228;
-    font-family: FontAwesome;	
-    font-size: 24px;	
+    width: auto;	
+    color: #1B1B1B;	
+    font-family: Helvetica;	
+    font-size: 20px;	
+    font-weight: 300;	
     line-height: 24px;
-}
-.modal-content-message{
-    height: 22px;	
-    width: auto;	
-    color: #000000;	
-    font-family: Helvetica;	
-    font-size: 18px;	
-    line-height: 22px;
-    margin-bottom:13px;
-}
-
-.modal-button{
-    height: 29px;	
-    width: 109px;	
-    background-color: #52B679;	
-    box-shadow: 2px 2px 4px 0 #52B679;
-    text-align: center;
-    margin-right: 39px; 
-    margin-top:16px;
-    cursor: pointer;
-}
-.modal-button-cancel-text{
-    height: 22px;	
-    width: auto;	
-    color: white;	
-    font-family: 
-    Helvetica;	
-    font-size: 18px;	
-    line-height: 30px;
-    cursor: pointer;
-    
-}
-.modal-button-continue-container{
-    height: 29px;	
-    width: 109px;	
-    text-align: center;
-    margin-right: 39px; 
-    margin-top:16px;
-    cursor: pointer;
-
-}
-.modal-button-continue-text{
-    height: 22px;	
-    width: auto;;	
-    color: #000000;	
-    font-family: Helvetica;	
-    font-size: 18px;	
-    line-height: 30px;
-}
-.modal-wrapper{
-    margin-top:12px;
-    margin-left:17px;
-    display: inline-block; 
-}
-
-.modal-header-container{
-    margin-bottom: 17px;
-}
-.modal-dialog{
-    pointer-events: auto;
+    display: inline-block;
 }

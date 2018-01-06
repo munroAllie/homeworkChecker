@@ -1,68 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-10">
-      <h3>Students</h3>
-      <div (click)="toggleAssignmentWindow()" class="trackButton">Create Assignment</div>
-      <div class="div"></div>
-      <div (click)="cancelAssignment()" class="trackButton">Cancel Assignment</div>
-      <div class="seperator"></div>
-      <form #f="ngForm">
-        <div class="card student-card" *ngFor="let student of students|async">
-          <div class="container">
-            <div class="row">
-              <div [routerLink]="['./editstudent', student.firstName, student.lastName]">{{student.firstName}} {{student.lastName}} </div>
-              <div *ngIf="trackingState" class="radio" ngModelGroup=status>
-                <div *ngFor="let val of status">
-                  <label>
-                    <input type="radio" [name]="student.firstName+student.lastName+'status'" ngModel [value]="val"> {{val}}
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-      <div (click)="recordStudents()" *ngIf="trackingState" class="submit">Submit Track</div>
-    </div>
-  </div>
-</div>
-
-
-<div *ngIf="createAssignmentState" class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-box">
-      <div class="modal-content-container">
-        <div class="modal-wrapper">
-          <div class="row modal-header-container">
-            <div class="modal-title-symbol">
-              <i class="fa fa-book" aria-hidden="true"></i>
-            </div>
-            <div class="modal-title">
-              Assignment
-            </div>
-          </div>
-          <div class="row">
-            <div class="modal-content-message">
-              Assignment Description
-            </div>
-          </div>
-          <div class="row">
-            <form #description="ngForm">
-              <textarea [(ngModel)]="descriptionText" [value]="description" name="description" rows="1" placeholder="Type in a description of the assignment...">
-            </textarea>
-            <div class="div">{{descriptionText}}</div>
-            </form>
-          </div>
-          <div class="row">
-            <div (click)="createAssignment()" class="modal-button">
-              <div class="modal-button-cancel-text">Create</div>
-            </div>
-            <div class="modal-button-continue-container">
-              <div (click)="cancelAssignment()" class="modal-button-continue-text">Cancel</div>
-            </div>
-          </div>
-        </div>
+<div class="dashboard-background">
+  <div class="dashboard-card">
+    <div class="card-container">
+      <div class="row">
+        <div class="card-title">Students</div>
       </div>
     </div>
   </div>
