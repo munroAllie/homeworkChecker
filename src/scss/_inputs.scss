@@ -7,6 +7,9 @@
     color: $dark-gray;	
     font-family: Helvetica;	
     margin: .25em;
+    display: inline-block;
+    width: auto;
+    height: 2em;
 }
 
 .form-control::placeholder {
