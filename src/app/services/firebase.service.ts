@@ -36,6 +36,23 @@ export class FirebaseService {
     })
   }
 
+  addAssignment(studentInfo:studentInfo, description:string, status: string){
+    this.afAuth.authState.subscribe(auth => {
+      this.af.database.ref("/students").child(auth.uid).child(studentInfo.studentId).child("/assignments").push({
+        AssignmentDescription: description,
+        Status: status
+      })
+      .then( val =>{
+        this.af.database.ref("/students").child(auth.uid).child(studentInfo.studentId).child("/assignments").child(val.key).update({
+          assignmentId: val.key
+        })
+      }) 
+    
+      })
+
+    }
+  
+
   updateStudent(studentInfo: studentInfo) {
     this.afAuth.authState.subscribe((val) => {
       this.af.database.ref("/students").child(val.uid).child(studentInfo.studentId).update(studentInfo)
@@ -46,6 +63,11 @@ export class FirebaseService {
       this.af.database.ref("/students").child(val.uid).child(studentInfo.studentId).remove();
     })
   }
+
+  getAssignments(teacherId:string, studentInfo: studentInfo){
+      return this.af.list<any>('/students/' + teacherId+"/"+studentInfo.studentId+"/assignments") as AngularFireList<any>
+    }
+  
 }
 
 
