@@ -15,9 +15,23 @@ import { Subscription } from 'rxjs/Subscription';
 
 export class DashboardComponent implements OnInit {
 
+
   @ViewChild('f') statusForm;
   @ViewChild('description') description;
-
+  private studentMarkedForDeletion:studentInfo;
+  private studentInfo: studentInfo = {
+    firstName: "",
+    lastName: "",
+    teacher: "",
+    studentId: "",
+    parentEmail: "",
+    incompleted: 0, 
+    attempted: 0,
+    completed: 0,
+    edit: false
+  }
+  dashboardState:string="default";
+  addStudentState:boolean = false;
   trackingState:boolean = false;
   createAssignmentState:boolean = false;
   isLoggedIn: boolean; //Holds the boolean for if the user is logged in
@@ -25,6 +39,7 @@ export class DashboardComponent implements OnInit {
   status: string[] = ["incompleted", "attempted", "completed"];
   track: Subscription;
   descriptionText:string = "Please type in a decription here...";
+
   constructor(
     private firebaseService: FirebaseService,
     private authService: AuthService,
@@ -40,6 +55,7 @@ export class DashboardComponent implements OnInit {
     this.firebaseService.afAuth.authState.subscribe((val) => {
       if (val != null) {
         this.students = this.firebaseService.getStudents(val.uid).valueChanges();
+        
       }
     })
   }
@@ -76,19 +92,37 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  toggleAssignmentWindow(){
-    this.createAssignmentState =! this.createAssignmentState;
+  addStudent(){
+    this.firebaseService.addStudent(this.studentInfo);
+    this.dashboardState='default';
+    this.resetStudentInfo()
+   }
+  resetStudentInfo(){
+    this.studentInfo ={
+      firstName: "",
+      lastName: "",
+      teacher: "",
+      studentId: "",
+      parentEmail: "",
+      incompleted: 0, 
+      attempted: 0,
+      completed: 0,
+      edit: false
+    }
+
   }
 
-  cancelAssignment(){
-    this.trackingState = false;
-    this.createAssignmentState=false;
-    //delete stored assignment data
+  deleteStudent(){
+    this.dashboardState='default'
+    this.firebaseService.deleteStudent(this.studentMarkedForDeletion);
   }
 
-  createAssignment(){
-    this.trackingState = true;
-    this.toggleAssignmentWindow();
-    
+  saveStudentChanges(student:studentInfo){
+    student.edit = false;
+    this.dashboardState='default'
+    this.firebaseService.updateStudent(student);
+  }
+  markStudentForDeletion(student:studentInfo){
+    this.studentMarkedForDeletion = student;
   }
 }

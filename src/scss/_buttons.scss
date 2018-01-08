@@ -1,6 +1,16 @@
 .btn{
     text-transform: none;
 }
+
+.btn-outline-primary.disabled {
+    border-color: $secondary; 
+    color: $secondary;
+}
+
+.btn.disabled {
+    pointer-events: none;
+}
+
 .btn-primary {
     background-color: $secondary;
     border-color: $secondary;
@@ -29,6 +39,7 @@
     a {
         color: $dark-gray
     }
+
 }
 .btn.btn-nav {
     color: #fff;
@@ -45,4 +56,32 @@
     box-shadow: 2px 2px 8px 0 $action;
     border-color: $action;
     
+}
+
+.btn-confirm{
+    background-color: $primary;
+    border-color: $primary;
+    box-shadow: 2px 2px 14px 0 rgba(82, 182, 84, 0.87);
+}
+
+.btn-confirm:hover{
+    background-color: $primary;
+    border-color: $primary;
+    background-color: darken($color: $primary, $amount: 10);
+    border-color: darken($color: $primary, $amount: 10);
+    box-shadow: 2px 2px 28px 0 rgba(82, 182, 84, 0.87);
+}
+
+.btn-cancel{
+    background-color: $cancel;
+    border-color: $cancel;
+    box-shadow: 2px 2px 14px 0 rgba(182, 82, 82,0.87);
+}
+
+.btn-cancel:hover{
+    background-color: $cancel;
+    border-color: $cancel;
+    background-color: darken($color: $cancel, $amount: 10);
+    border-color: darken($color: $cancel, $amount: 10);
+    box-shadow: 2px 2px 28px 0 rgba(182, 82, 82,0.87);
 }

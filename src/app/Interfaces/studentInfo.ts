@@ -7,4 +7,5 @@ export interface studentInfo{
     incompleted?:number;
     attempted?:number;
     completed?:number;
+    edit?:boolean;
 }

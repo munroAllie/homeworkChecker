@@ -1,16 +1,24 @@
 @import '../../../styles.scss';
 
-nav.navbar {
-    background: $primary;
-}
 
-.logoutButton{
-    height: 22px;	
-    width: 100px;	
-    color: #FFFFFF;	
-    font-family: Helvetica;	
-    font-size: 18px;	
-    font-weight: bold;	
-    line-height: 22px;
-    cursor: pointer;
+.user-icon{
+    color:white;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+.header-bar{
+    background-color: $primary;
+    height: 50px;
+    width:100%;
+}
+.brand{
+    margin:10px;
+    display: inline-block;
+    padding: 0;
+}
+.fa{
+    font-size: 2em;
+}
+.col-sm-12{
+    padding: 0px;
 }
