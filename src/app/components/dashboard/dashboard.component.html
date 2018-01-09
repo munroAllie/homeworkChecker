@@ -15,16 +15,25 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="dashboardState=='trackingHomework'">
+      <div class="descriptionTitle col-sm-12 " [ngClass]="{'danger':descriptionField.invalid&&descriptionField.touched}">Homework Name</div>
       <div class="col-sm-12 search">
-        <input type="text" class="form-control" placeholder="Search...">
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="text" class="form-control descriptionField" [(ngModel)]="descriptionText" [ngClass]="{'is-invalid':descriptionField.invalid&&descriptionField.touched}"
+          name="descriptionText" #descriptionField="ngModel" autocomplete="new-password" autocomplete="off" required>
+        <i class="fa fa-file-o" aria-hidden="true"></i>
+        <div *ngIf="descriptionField.invalid && (descriptionField.dirty || descriptionField.touched)" class="row">
+          <div *ngIf='descriptionField.errors.required' class="col-sm-12 text-danger">
+            Please give your homework a name
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       {{dashboardState}}
     </div>
-
+    <div class="row">
+      {{descriptionText}}
+    </div> -->
 
     <!-- Beginning of table -->
     <table class="table">
@@ -38,36 +47,34 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students|async">
+        <tr *ngFor="let student of students">
           <!-- display the following if the student isn't in edit mode -->
           <td *ngIf="!student.edit">
-            <div class="btn btn-action" 
-            [ngClass]="{disabled:dashboardState!=='default'}"  
-            (click)="student.edit=true" 
-            (click)="dashboardState='editState'">Edit
+            <div class="btn btn-action" [ngClass]="{disabled:dashboardState!=='default'}" (click)="student.edit=true" (click)="dashboardState='editState'"
+              *ngIf="dashboardState=='editState'||dashboardState=='default'">Edit
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
             <div class="track-homework-actions" *ngIf="dashboardState==='trackingHomework'">
               <form>
-                <i class="fa fa-minus" aria-hidden="true" (click)="student.homeworkStatus='null'"></i>
-                <i class="fa fa-close" aria-hidden="true" (click)="student.homeworkStatus='incompleted'"></i>
-                <i class="fa fa-check" aria-hidden="true" (click)="student.homeworkStatus='completed'"></i>
+                <i class="fa fa-minus" [ngClass]="{'selected':student.status=='NA'}" aria-hidden="true" (click)="student.status='NA'"></i>
+                <i class="fa fa-close" [ngClass]="{'selected':student.status=='incompleted'}" aria-hidden="true" (click)="student.status='incompleted'"></i>
+                <i class="fa fa-check" [ngClass]="{'selected':student.status=='completed'}" aria-hidden="true" (click)="student.status='completed'"></i>
               </form>
             </div>
           </td>
-          <td *ngIf="!student.edit" (click)="dashboardState='studentInfoModal'">{{student.lastName}}</td>
-          <td *ngIf="!student.edit">{{student.firstName}}</td>
-          <td *ngIf="!student.edit">{{student.parentEmail}}</td>
-          <td *ngIf="!student.edit"></td>
+          <td *ngIf="!student.edit" (click)="dashboardState='studentInfoModal'" (click)="markStudentForInfo(student)">{{student.lastName}}</td>
+          <td *ngIf="!student.edit" (click)="dashboardState='studentInfoModal'" (click)="markStudentForInfo(student)">{{student.firstName}}</td>
+          <td *ngIf="!student.edit" (click)="dashboardState='studentInfoModal'" (click)="markStudentForInfo(student)">{{student.parentEmail}}</td>
+          <td *ngIf="!student.edit" (click)="dashboardState='studentInfoModal'" (click)="markStudentForInfo(student)">{{student.status}}</td>
 
           <!-- this the following IF the student is in edit mode and dashboard is in default mode -->
           <td *ngIf="student.edit">
-            <div class="btn btn-action"  (click)="student.edit=false" (click)="dashboardState='default'" >Cancel
+            <div class="btn btn-action" (click)="student.edit=false" (click)="dashboardState='default'">Cancel
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
             <div class="track-homework-actions" *ngIf="dashboardState==='trackingHomework'">
               <form>
-                <i class="fa fa-minus" aria-hidden="true" (click)="student.homeworkStatus='null'"></i>
+                <i class="fa fa-minus tooltip" aria-hidden="true" (click)="student.homeworkStatus='NA'"></i>
                 <i class="fa fa-close" aria-hidden="true" (click)="student.homeworkStatus='incompleted'"></i>
                 <i class="fa fa-check" aria-hidden="true" (click)="student.homeworkStatus='completed'"></i>
               </form>
@@ -104,14 +111,14 @@
               name="email" #parentEmail="ngModel" autocomplete="new-password" autocomplete="off">
           </td>
           <td *ngIf="student.edit">
-              <div class="confirm-cancel-btns">
-                  <div class="btn btn-confirm" (click)="saveStudentChanges(student)">Save
-                    <i class="fa fa-save" aria-hidden="true"></i>
-                  </div>
-                  <div class="btn btn-cancel" (click)="dashboardState='deleteStudentModal'" (click)="markStudentForDeletion(student)">Delete
-                    <i class="fa fa-save" aria-hidden="true"></i>
-                  </div>
-                </div>
+            <div class="confirm-cancel-btns">
+              <div class="btn btn-confirm" (click)="saveStudentChanges(student)">Save
+                <i class="fa fa-save" aria-hidden="true"></i>
+              </div>
+              <div class="btn btn-cancel" (click)="dashboardState='deleteStudentModal'" (click)="markStudentForDeletion(student)">Delete
+                <i class="fa fa-save" aria-hidden="true"></i>
+              </div>
+            </div>
           </td>
         </tr>
 
@@ -151,7 +158,8 @@
           </td>
           <td>
             <div class="confirm-cancel-btns">
-              <div class="btn btn-confirm" [ngClass]="{disabled:studentFirstName.invalid||studentLastName.invalid||parentEmail.invalid}" (click)="addStudent()">Save
+              <div class="btn btn-confirm" [ngClass]="{disabled:studentFirstName.invalid||studentLastName.invalid||parentEmail.invalid}"
+                (click)="addStudent()">Save
                 <i class="fa fa-save" aria-hidden="true"></i>
               </div>
               <div class="btn btn-cancel" (click)="dashboardState='default'">Cancel
@@ -163,11 +171,11 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="dashboardState==='trackingHomework'" class="confirm-cancel-btns">
-    <div class="btn btn-confirm">Save
+  <div *ngIf="dashboardState==='trackingHomework'" class="confirm-cancel-btns tracking-action-buttons">
+    <div class="btn btn-confirm" (click)="recordStudents()" (click)="dashboardState='default'">Save
       <i class="fa fa-save" aria-hidden="true"></i>
     </div>
-    <div class="btn btn-cancel" (click)="dashboardState='default'">Cancel
+    <div class="btn btn-cancel" (click)="dashboardState='default'" (click)="resetTrackingStates()">Cancel
       <i class="fa fa-save" aria-hidden="true"></i>
     </div>
   </div>
@@ -178,70 +186,70 @@
   </div>
 </div>
 
-<!-- Delete Student Modal -->
-<div *ngIf="dashboardState==='deleteStudentModal'" class="modal fade show" id="deleteStudentInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-box">
-        <div class="modal-content-container">
-            <div class="modal-wrapper">
-                <div class="row modal-header-container">
-                    <div class="modal-title-symbol">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-title">
-                        Warning
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="modal-content-message">
-                        Are you sure you want to delete this student?
-                    </div>
-                </div>
-                <div class="row">
-                    <div (click)="dashboardState='editState'" class="modal-button">
-                        <div class="modal-button-cancel-text">Cancel</div>
-                    </div>
-                    <div (click)="deleteStudent()" class="modal-button-continue-container">
-                        <div  class="modal-button-continue-text">continue</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- deleteStudentModal -->
+<div class="delete-student-modal-wrapper" *ngIf="dashboardState === 'deleteStudentModal'">
+  <div class="modal-card card">
+    <div class="card-title">
+      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Warning</div>
+    <div class="modal-description">
+      Are you sure you want to delete this student?
     </div>
-</div>
+    <div class="modal-buttons">
+      <div class="btn btn-cancel" (click)="deleteStudent()">Continue</div>
+      <div class="btn blank" (click)="dashboardState='default'">cancel</div>
+    </div>
+  </div>
+  <div class="modal-background"></div>
 </div>
 
 <!-- studentInfo Modal -->
-<div *ngIf="dashboardState==='studentInfoModal'" class="modal fade show" id="studentInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-box">
-        <div class="modal-content-container">
-            <div class="modal-wrapper">
-                <div class="row modal-header-container">
-                    <div class="modal-title-symbol">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-title">
-                        Warning
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="modal-content-message">
-                        Are you sure you want to delete this student?
-                    </div>
-                </div>
-                <div class="row">
-                    <div (click)="dashboardState='editState'" class="modal-button">
-                        <div class="modal-button-cancel-text">Cancel</div>
-                    </div>
-                    <div (click)="deleteStudent()" class="modal-button-continue-container">
-                        <div  class="modal-button-continue-text">continue</div>
-                    </div>
-                </div>
-            </div>
+<div class="info-modal-wrapper" *ngIf="dashboardState === 'studentInfoModal'">
+  <div class="modal-card card">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card-title">{{studentMarkedForInfo.lastName}}, {{studentMarkedForInfo.firstName}}</div>
+      </div>
+      <div class="col-sm-6">
+        <div class="rating pull-right">50%
+          <!-- put popup here with position relative -->
+          <!-- <div class="card popup">Popup</div> -->
         </div>
+
+      </div>
     </div>
-</div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- <th style="width:20%">Date</th> -->
+            <th style="width:50%">Homework Description</th>
+            <th style="width:30%" class="text-center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Display a message if there are no assignments tracked yet -->
+          <tr *ngIf="assignments==''">
+            <!-- <th scope="row">2017/01/21</th> -->
+            <td>No Homework Assignments Tracked</td>
+            <td></td>
+          </tr>
+          <!-- List all of the assignments -->
+          <tr *ngFor="let assignment of assignments">
+            <!-- <th scope="row">2017/01/21</th> -->
+            <td>{{assignment.AssignmentDescription}}</td>
+            <td class="text-center" *ngIf="assignment.Status == 'completed'">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </td>
+            <td class="text-center" *ngIf="assignment.Status == 'Homework was not tracked'">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </td>
+            <td class="text-center" *ngIf="assignment.Status == 'incompleted'">
+              <i class="fa fa-close" aria-hidden="true"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-background" (click)="dashboardState = 'default'"></div>
 </div>

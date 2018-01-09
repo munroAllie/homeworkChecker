@@ -5,7 +5,9 @@
     background-color: #d3d3d3;
     overflow: auto;
 }
-
+td .tooltip  {
+    position:absolute
+}
 .card-title{
     height: 24px;	
     width: auto;	
@@ -18,6 +20,7 @@
     margin-top: 6px;
 }
 .utility-buttons{
+    margin-bottom:30px;
     .btn{
         margin-left:1em;
         font-size: 18px;    
@@ -25,14 +28,39 @@
     }
 }
 .search{
+    margin-bottom:30px;
     i {
         margin-left: 1em;
     }
 
 }
 .table{
+    th{
+        border-top: 0px;
+        padding-bottom: 3px;
+        
+    }
+}
+.descriptionTitle{
+    font-size:14px;
+    color: #1C1C1C;
+}
+.descriptionField{
+    width:500px;
+}
+.danger{
+    color:red;
+}
+
+.table{
     width: 100%;
     margin-bottom: 0px;
+}
+
+.btn-action{
+    .fa{
+        margin-left:15px;
+    }
 }
 .confirm-cancel-btns{
     width: 100%;
@@ -54,6 +82,15 @@
     input {
        // display: none;
     }
+    .fa-minus.selected{
+            color: $secondary;
+    }
+    .fa-check.selected{
+            color: $primary;
+    }
+    .fa-close.selected{
+            color: $cancel;
+    }
     .fa-minus:hover {
         color: $secondary;
         cursor: pointer;
@@ -66,102 +103,133 @@
        color: $cancel;
        cursor: pointer;
     }
-}
-
-
-
-// Modal
-.modal-title{
-    height: 29px;	
-    width: auto;
-    text-align: left;	
-    color: #FDC228;	
-    font-family: Helvetica;	
-    font-size: 24px;	
-    line-height: 29px;
-
-}
-.modal-box{
-    height: 192px;	
-    width: 361px;	
-    border-radius: 6px;	
-    background-color: #FFFFFF;	
-    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.2);
-}
-
-.modal-content-container{
-    height:100%;
-    width:100%;
-    margin-left: 17px;
-    margin-top: 12px;
-    
-
-}
-.modal-title-symbol{
-    height: 24px;	
-    width: 24px;	
-    color: #FDC228;
-    font-family: FontAwesome;	
-    font-size: 24px;	
-    line-height: 24px;
-}
-.modal-content-message{
-    height: 22px;	
-    width: auto;	
-    color: #000000;	
-    font-family: Helvetica;	
-    font-size: 18px;	
-    line-height: 22px;
-    margin-bottom:13px;
-}
-
-.modal-button{
-    height: 29px;	
-    width: 109px;	
-    background-color: #52B679;	
-    box-shadow: 2px 2px 4px 0 #52B679;
-    text-align: center;
-    margin-right: 39px; 
-    margin-top:16px;
-    cursor: pointer;
-}
-.modal-button-cancel-text{
-    height: 22px;	
-    width: auto;	
-    color: white;	
-    font-family: 
-    Helvetica;	
-    font-size: 18px;	
-    line-height: 30px;
-    cursor: pointer;
     
 }
-.modal-button-continue-container{
-    height: 29px;	
-    width: 109px;	
-    text-align: center;
-    margin-right: 39px; 
-    margin-top:16px;
-    cursor: pointer;
-
-}
-.modal-button-continue-text{
-    height: 22px;	
-    width: auto;;	
-    color: #000000;	
-    font-family: Helvetica;	
-    font-size: 18px;	
-    line-height: 30px;
-}
-.modal-wrapper{
-    margin-top:12px;
-    margin-left:17px;
-    display: inline-block; 
+.tracking-action-buttons{
+    margin-left:15px;
 }
 
-.modal-header-container{
-    margin-bottom: 17px;
+.info-modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+    .fa-minus{
+        color: $secondary;
+    }
+    .fa-check{
+        color: $primary;
+    }
+    .fa-close{
+        color: $cancel;
+    }
+    th {
+        border-top: 0px;
+        padding-bottom: 3px;
+    }
+    .modal-background{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        overflow: auto;
+    }
+    .modal-card {
+        animation-name: fadeinfromtop;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        display: block;
+        margin: 0 auto;
+        margin-top: 100px;
+        max-width: 520px;
+        padding: 8px 26px;
+    }
+    .card-title {
+            font-size: 18px;
+    }
+    .rating {
+            color: #F5A623;
+            font-size: 21px;
+            font-weight: bold;
+            .popup{
+                position: relative;
+            }
+    }   
 }
-.modal-dialog{
-    pointer-events: auto;
+
+
+.delete-student-modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+    .fa{
+        margin-right:15px;
+    }
+    th {
+        border-top: 0px;
+        padding-bottom: 3px;
+    }
+    .modal-background{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        overflow: auto;
+    }
+    .modal-card {
+        animation-name: fadeinfromtop;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        display: block;
+        margin: 0 auto;
+        margin-top: 100px;
+        max-width: 520px;
+        padding: 8px 26px;
+    }
+    .card-title {
+            color: #F5A623;
+            font-size: 24px;  
+            margin-bottom:17px;   
+    }
+    .rating {
+            color: #F5A623;
+            font-size: 21px;
+            font-weight: bold;
+            .popup{
+                position: relative;
+            }
+    }
+    .modal-description{
+            color: #1C1C1C;
+            font-size: 18px;
+            margin-bottom:60px;
+    }
+    .blank{
+        color: #1C1C1C;;
+        background-color: transparent;
+        border: none;
+        font-size: 18px;
+        margin-left:10px;
+    }  
+    .blank:hover{
+        color:  #1C1C1C;;
+        background-color: transparent;
+        border-color: #1C1C1C;;
+
+    }
+    .btn-cancel{
+        border-radius: 0px;
+        color: #FFFFFF;	
+        font-size: 18px;	
+        padding: 0px 24px;
+    } 
 }

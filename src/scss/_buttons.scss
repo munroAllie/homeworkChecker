@@ -48,7 +48,7 @@
     background-color: lighten($color:$dark-gray, $amount:20);	
     box-shadow: 2px 2px 4px 0 lighten($color:$dark-gray, $amount:20);
     border-color: lighten($color:$dark-gray, $amount:20);
-    padding: 2px 10px;
+    padding: 0px 10px;
 }
 
 .btn-action:hover{

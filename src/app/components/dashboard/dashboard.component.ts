@@ -6,6 +6,7 @@ import { FirebaseService } from '../../services/firebase.service';
 import { AuthService } from '../../services/auth.service';
 import { studentInfo } from '../../Interfaces/studentInfo';
 import { Subscription } from 'rxjs/Subscription';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild('f') statusForm;
   @ViewChild('description') description;
   private studentMarkedForDeletion:studentInfo;
+  private studentMarkedForInfo:studentInfo;
   private studentInfo: studentInfo = {
     firstName: "",
     lastName: "",
@@ -26,19 +28,21 @@ export class DashboardComponent implements OnInit {
     studentId: "",
     parentEmail: "",
     incompleted: 0, 
-    attempted: 0,
+    notApplicable: 0,
     completed: 0,
-    edit: false
+    edit: false,
+    status: ""
   }
+  private assignments:any[]
+
   dashboardState:string="default";
   addStudentState:boolean = false;
   trackingState:boolean = false;
   createAssignmentState:boolean = false;
   isLoggedIn: boolean; //Holds the boolean for if the user is logged in
-  students: Observable<any[]>;
-  status: string[] = ["incompleted", "attempted", "completed"];
+  students: studentInfo[];
   track: Subscription;
-  descriptionText:string = "Please type in a decription here...";
+  descriptionText:string = "";
 
   constructor(
     private firebaseService: FirebaseService,
@@ -54,42 +58,43 @@ export class DashboardComponent implements OnInit {
   getStudents() {
     this.firebaseService.afAuth.authState.subscribe((val) => {
       if (val != null) {
-        this.students = this.firebaseService.getStudents(val.uid).valueChanges();
+        this.firebaseService.getStudents(val.uid).valueChanges().subscribe( val =>{
+        this.students=val;
+        });
         
       }
     })
   }
 
   recordStudents() {
-    this.track = this.students.subscribe((val) => {
-      val = val as studentInfo[]
-      for (var i = 0; i < val.length; i++) {
-      var tempName = val[i].firstName + val[i].lastName +"status";
-      var status = this.statusForm.value.status[tempName];
-      switch(status){
-        case "incompleted":{
-          val[i].incompleted +=1;
+    for( var i = 0; i<=this.students.length-1;i++){
+      console.log(this.descriptionText)
+      switch(this.students[i].status){
+          case "incompleted":{
+          this.students[i].incompleted +=1;
           break;
         }
-        case "attempted":{
-          val[i].attempted +=1;
+        case "NA":{
+          this.students[i].notApplicable +=1;
+          this.students[i].status = "Homework was not tracked";
+          break;
+        }
+        case "":{
+          this.students[i].notApplicable +=1;
+          this.students[i].status = "Homework was not tracked";
           break;
         }
         case "completed":{
-          val[i].completed +=1;
+          this.students[i].completed +=1;
           break;
         }
       }
-      this.firebaseService.updateStudent(val[i]);
-      if(status=="")
-      status="Homework not tracked";
-      this.firebaseService.addAssignment(val[i], this.descriptionText, status);
-      }
-      this.trackingState=false;
-      this.track.unsubscribe();
+
+      this.firebaseService.addAssignment(this.students[i], this.descriptionText, this.students[i].status);
+      this.students[i].status="";
+      this.firebaseService.updateStudent(this.students[i]);
     }
-  )
-    
+      //this.resetTrackingStates();
   }
 
   addStudent(){
@@ -105,13 +110,20 @@ export class DashboardComponent implements OnInit {
       studentId: "",
       parentEmail: "",
       incompleted: 0, 
-      attempted: 0,
+      notApplicable: 0,
       completed: 0,
+      status:"",
       edit: false
     }
-
   }
 
+  resetTrackingStates(){
+    for(var i = 0; i<=this.students.length-1;i++){
+      this.students[i].status = "";
+  }
+    this.descriptionText =""
+
+  }
   deleteStudent(){
     this.dashboardState='default'
     this.firebaseService.deleteStudent(this.studentMarkedForDeletion);
@@ -124,5 +136,17 @@ export class DashboardComponent implements OnInit {
   }
   markStudentForDeletion(student:studentInfo){
     this.studentMarkedForDeletion = student;
+  }
+
+  markStudentForInfo(student:studentInfo){
+    this.studentMarkedForInfo = student;
+    this.firebaseService.afAuth.authState.subscribe( val =>{
+       this.firebaseService.getAssignments(val.uid,this.studentMarkedForInfo).valueChanges().subscribe(val=>{
+        this.assignments = val;
+        console.log(this.assignments)
+       
+      })
+    })
+
   }
 }
