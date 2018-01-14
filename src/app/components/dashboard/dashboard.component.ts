@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit {
 
   private homeworkValidated: boolean = true;
   private addStudentFormValidated:boolean = true;
+  private percentage:number;
 
   dashboardState: string = "default";
   addStudentState: boolean = false;
@@ -180,6 +181,7 @@ export class DashboardComponent implements OnInit {
 
   markStudentForInfo(student: studentInfo) {
     this.studentMarkedForInfo = student;
+    this.percentage = Math.round(this.studentMarkedForInfo.completed / (this.studentMarkedForInfo.completed + this.studentMarkedForInfo.incompleted)*100)
     this.firebaseService.afAuth.authState.subscribe(val => {
       this.firebaseService.getAssignments(val.uid, this.studentMarkedForInfo).valueChanges().subscribe(val => {
         this.assignments = val;
