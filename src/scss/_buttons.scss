@@ -1,15 +1,103 @@
-
-.btn-primary {
-    margin-top: 1em;
-    box-shadow: 2px 2px 14px 0 rgba(143,199,174,0.87);
+.btn{
+    text-transform: none;
 }
 
+.btn.btn-simple {
+    text-align: left;
+   background-color: transparent;
+   color: $dark-gray;
+   border: none;
+   box-shadow: none;
+   i{
+       display: none;
+   }
+}
+.btn.btn-simple.btn-action:hover{
+    color: $action;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.btn-outline-primary.disabled {
+    border-color: $secondary; 
+    color: $secondary;
+}
+
+.btn.disabled {
+    pointer-events: none;
+}
+
+.btn-primary {
+    background-color: $secondary;
+    border-color: $secondary;
+    margin-top: 1em;
+    box-shadow: 2px 2px 14px 0 rgba(41, 168, 203, 0.87);
+    margin-top: 0;
+
+}
+.btn-primary:hover {
+    background-color: darken($color: $secondary, $amount: 10);
+    border-color: darken($color: $secondary, $amount: 10);
+    box-shadow: 2px 2px 28px 0 rgba(41, 168, 203, 0.87);
+}
+.btn-outline-primary{
+    border-color: $secondary;
+    color: $secondary;
+
+}
+.btn-outline-primary:hover{
+    border-color: $secondary;
+    color: white;
+    background-color: $secondary;
+}
 .btn-secondary {
     margin-top: 1em;
     a {
         color: $dark-gray
     }
+
 }
 .btn.btn-nav {
     color: #fff;
+}
+.btn-action{
+    background-color: lighten($color:$dark-gray, $amount:20);	
+    box-shadow: 2px 2px 4px 0 lighten($color:$dark-gray, $amount:20);
+    border-color: lighten($color:$dark-gray, $amount:20);
+    padding: 0px 10px;
+}
+
+.btn-action:hover{
+    background-color: $action;
+    box-shadow: 2px 2px 8px 0 $action;
+    border-color: $action;
+    
+}
+
+.btn-confirm{
+    background-color: $primary;
+    border-color: $primary;
+    box-shadow: 2px 2px 14px 0 rgba(82, 182, 84, 0.87);
+}
+
+.btn-confirm:hover{
+    background-color: $primary;
+    border-color: $primary;
+    background-color: darken($color: $primary, $amount: 10);
+    border-color: darken($color: $primary, $amount: 10);
+    box-shadow: 2px 2px 28px 0 rgba(82, 182, 84, 0.87);
+}
+
+.btn-cancel{
+    background-color: $cancel;
+    border-color: $cancel;
+    box-shadow: 2px 2px 14px 0 rgba(182, 82, 82,0.87);
+}
+
+.btn-cancel:hover{
+    background-color: $cancel;
+    border-color: $cancel;
+    background-color: darken($color: $cancel, $amount: 10);
+    border-color: darken($color: $cancel, $amount: 10);
+    box-shadow: 2px 2px 28px 0 rgba(182, 82, 82,0.87);
 }

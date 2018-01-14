@@ -5,6 +5,8 @@ export interface studentInfo{
     studentId?:string;
     parentEmail?:string;
     incompleted?:number;
-    attempted?:number;
+    notApplicable?:number;
     completed?:number;
+    edit?:boolean;
+    status?:string;
 }

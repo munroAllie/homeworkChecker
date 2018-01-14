@@ -1,16 +1,55 @@
 @import '../../../styles.scss';
 
-nav.navbar {
-    background: $primary;
+
+.header-bar{
+    background-color: $primary;
+    height: 50px;
+    width:100%;
+}
+.brand{
+    margin:10px;
+    display: inline-block;
+    padding: 0;
+}
+.fa{
+    font-size: 2em;
+}
+.col-sm-12{
+    padding: 0px;
 }
 
-.logoutButton{
-    height: 22px;	
-    width: 100px;	
-    color: #FFFFFF;	
-    font-family: Helvetica;	
-    font-size: 18px;	
-    font-weight: bold;	
-    line-height: 22px;
-    cursor: pointer;
+.menu {
+    position: absolute;
+    color: #fff;
+    right: 25px;
+    top: 10px;
+    text-align: right;
+    z-index: 999;
+    .card{
+        position: relative;
+        right: -30px;
+        top: -10;
+        text-align: left;
+        padding: 10px;
+    }
+    .btn-primary{
+        text-align: left;
+        font-size: 12px;
+        color: #fff;
+        line-height: 11px;
+        width: 150px;
+        height:30px;
+    }
+    .username{
+            color: #616161;
+            font-size: 12px;
+            font-weight: 300;
+            margin-bottom:5px;
+
+    }
+}
+
+hr{
+    margin-bottom: 10px;
+    margin-top:0px;
 }

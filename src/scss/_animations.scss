@@ -1,0 +1,10 @@
+@keyframes fadeinfromtop {
+    0% {
+        top: 30px;
+        opacity: 0;
+    }
+    100% {
+        top: 60px;
+        opacity: 1;
+    }
+}

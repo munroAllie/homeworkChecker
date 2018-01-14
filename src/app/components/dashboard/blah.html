@@ -1,0 +1,62 @@
+<table class="table">
+    <thead>
+        <tr class="row">
+            <th>Actions</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Parent E-mail</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students |async">
+            <td>
+                <div class="btn btn-action">Edit
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>
+            </td>
+            <td>{{student.lastName}}</td>
+            <td>{{student.firstName}}</td>
+            <td>{{student.parentEmail}}</td>
+            <td></td>
+        </tr>
+
+        <form name="addStudentForm" #addStudentForm="ngForm" *ngIf="addStudentState">
+            <tr>
+                <td></td>
+                <td>
+                    <input type="string" class="form-control" [ngClass]="{'is-invalid':studentLastName.invalid&&studentLastName.touched}" [(ngModel)]="studentInfo.lastName"
+                        name="lastName" #studentLastName="ngModel" autocomplete="new-password" autocomplete="off" pattern="[a-zA-Z ]*"
+                        required>
+                    <!-- <div *ngIf="studentLastName.invalid && (studentLastName.dirty || studentLastName.touched)" class="row">
+                        <div *ngIf='studentLastName.errors.required' class="col-sm-12 text-danger">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>First name is required
+                        </div>
+                        <div *ngIf='studentLastName.errors?.pattern' class="col-sm-12 text-danger">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Invalid Format
+                        </div>
+                    </div> -->
+                </td>
+                <td>
+                    <input type="text" class="form-control" placeholder="Last Name">
+                </td>
+
+                <td>
+                    <input type="email" class="form-control" placeholder="Parent E-mail">
+                </td>
+
+                <td>
+                    <div class="confirm-cancel-btns">
+                        <div class="btn btn-confirm">Save
+                            <i class="fa fa-save" aria-hidden="true"></i>
+                        </div>
+                        <div class="btn btn-cancel">Cancel
+                            <i class="fa fa-save" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+        </form>
+    </tbody>
+</table>

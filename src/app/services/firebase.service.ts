@@ -39,11 +39,12 @@ export class FirebaseService {
   addAssignment(studentInfo:studentInfo, description:string, status: string){
     this.afAuth.authState.subscribe(auth => {
       this.af.database.ref("/students").child(auth.uid).child(studentInfo.studentId).child("/assignments").push({
-        AssignmentDescription: description,
-        Status: status
+
       })
       .then( val =>{
         this.af.database.ref("/students").child(auth.uid).child(studentInfo.studentId).child("/assignments").child(val.key).update({
+          AssignmentDescription: description,
+          Status: status,
           assignmentId: val.key
         })
       }) 

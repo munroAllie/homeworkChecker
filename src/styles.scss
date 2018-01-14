@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'scss/variables';
+@import 'scss/animations';
 @import 'scss/buttons';
 @import 'scss/inputs';
 @import 'scss/cards';
 @import 'scss/horizontal-rules';
 @import 'scss/layout';
 @import 'scss/modal';
+@import 'scss/toasts';
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

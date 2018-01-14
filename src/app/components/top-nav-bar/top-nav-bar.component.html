@@ -1,12 +1,21 @@
-<nav class="navbar">
-  <a class="navbar-brand" href="#">
-    <img src="../assets/images/Brand.png"  alt="">
-  </a>
-  <div id="navbarNav">
-    <div class="container">
-        <div class=" btn-nav logoutButton" (click)=logout()>
-        Logout   <i class="fa fa-sign-out" aria-hidden="true"></i>
+<div class="header-bar">
+    <div class="brand">
+        <a  href="#">
+            <img src="../assets/images/Brand.png"  alt="">
+          </a>
+    </div>
+    <div class="menu" (clickOutside)="onClickedOutside($event)">
+        <i class="fa fa-user-circle" aria-hidden="true"(click)='menuToggle=!menuToggle'></i>
+        <div class="card" *ngIf='menuToggle'>
+            <div class="username">
+                {{userName}}
+            </div>
+            <hr>
+            <div class="btn btn-primary" (click)="logout()" >
+                Logout
+            </div>    
         </div>
-    </div>  
-  </div>
-</nav>
+    </div>
+</div>
+
+
