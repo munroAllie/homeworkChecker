@@ -2,6 +2,22 @@
     text-transform: none;
 }
 
+.btn.btn-simple {
+    text-align: left;
+   background-color: transparent;
+   color: $dark-gray;
+   border: none;
+   box-shadow: none;
+   i{
+       display: none;
+   }
+}
+.btn.btn-simple.btn-action:hover{
+    color: $action;
+    background-color: transparent;
+    box-shadow: none;
+}
+
 .btn-outline-primary.disabled {
     border-color: $secondary; 
     color: $secondary;

@@ -4,8 +4,17 @@
             <img src="../assets/images/Brand.png"  alt="">
           </a>
     </div>
-    <div class="user-icon pull-right">
-        <i class="fa fa-user-circle" aria-hidden="true"></i>
+    <div class="menu" (clickOutside)="onClickedOutside($event)">
+        <i class="fa fa-user-circle" aria-hidden="true"(click)='menuToggle=!menuToggle'></i>
+        <div class="card" *ngIf='menuToggle'>
+            <div class="username">
+                {{userName}}
+            </div>
+            <hr>
+            <div class="btn btn-primary" (click)="logout()" >
+                Logout
+            </div>    
+        </div>
     </div>
 </div>
 

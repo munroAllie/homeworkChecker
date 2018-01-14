@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { componentFactoryName } from '@angular/compiler/public_api';
 import { FirebaseService } from './services/firebase.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +16,9 @@ import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.comp
 import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { DashboardComponent} from './components/dashboard/dashboard.component';
+import { ClickOutsideModule } from 'ng4-click-outside';
+
+
 
 
 const appRoutes:Routes =[
@@ -53,8 +57,9 @@ const firebaseConfig ={
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot(appRoutes)
- 
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    ClickOutsideModule
   ],
   providers: [
     FirebaseService, AuthService

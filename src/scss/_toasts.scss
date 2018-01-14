@@ -1,9 +1,6 @@
-.toast-wrapper {
-        position: absolute;
-        z-index: 999;
-        top: 60px;
+.toast {
+        
         bottom: 0;
-        right: 10px;
         display: block;
         height: 50px;
         width: 622px;
@@ -14,6 +11,7 @@
         font-size: 20px;
         padding-left: 15px;
         opacity: 1;
+        margin-bottom:1px;
         i {
             display: inline-block;
             line-height: 50px;
@@ -33,12 +31,21 @@
             vertical-align: middle;
         }
 }
-
-.show {
-    animation-name: fadeinfromtop;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+.positive{
+    background-color: $primary;
 }
+.toast-wrapper{
+    z-index: 999;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+}
+
+// .show {
+//     animation-name: fadeinfromtop;
+//     animation-duration: 1s;
+//     animation-fill-mode: forwards;
+// }
 .hide {
     animation-name: fadeinfromtop;
     animation-duration: 1s;
