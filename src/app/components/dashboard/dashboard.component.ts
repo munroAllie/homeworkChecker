@@ -42,6 +42,8 @@ export class DashboardComponent implements OnInit {
   private toasts: toasts[] = [];
 
   private homeworkValidated: boolean = true;
+  private homeworkPristine:boolean = true;
+
   private addStudentFormValidated:boolean = true;
   private percentage:any;
   private studentInfoModalPopUpShow:boolean = false;
@@ -227,7 +229,7 @@ export class DashboardComponent implements OnInit {
 
   validateHomework() {
     this.homeworkValidated=true;
-    for (var i = 1; i <= this.students.length - 1; i++) {
+    for (var i = 0; i <= this.students.length - 1; i++) {
       if (this.students[i].status=="") {
         this.homeworkValidated = false;
       }
@@ -237,6 +239,26 @@ export class DashboardComponent implements OnInit {
       this.homeworkValidated = false;
       
     }
+  }
+
+  checkHomeworkPristine(){
+      for(var i = 0; i<= this.students.length -1; i++){
+        if(this.students[i].status!=""){
+          this.homeworkPristine = false;
+        } 
+      }
+      if(this.descriptionText!=""){
+        this.homeworkPristine = false;
+      }
+      if(this.homeworkPristine == false){
+        this.dashboardState='cancelHomeworkModal'
+        this.homeworkPristine= true;
+      }
+      else{
+        this.dashboardState='default'
+        this.homeworkPristine= true;
+      }
+    
   }
 
 }
