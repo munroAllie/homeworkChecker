@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
   public user$ = this.authService.user;
   public isLoggedIn:boolean;
 
+  private email:string;
+  private password:string;
+
   constructor(
     private firebaseSerice:FirebaseService,
     private authService:AuthService,
@@ -31,6 +34,11 @@ export class LoginComponent implements OnInit {
   }
   loginWithGoogle(){
     this.authService.loginWithGoogle();
+  }
+
+  login(){
+    this.authService.login(this.email,this.password)
+    
   }
 
 }

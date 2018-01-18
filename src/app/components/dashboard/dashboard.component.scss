@@ -266,7 +266,28 @@ form{
         color: red;
     }
 }
+span {
+    &.rating {
+    cursor: pointer;
+    }   
+}
 
-.menu{
-    position: relative;
+.rating-wrapper{
+    .menu{
+    position: absolute;
+    z-index: 800;
+    right: 0;
+    top: 20px;
+    }
+    .card {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.2);
+    }
+}
+
+.info-modal-wrapper {
+    .card-title {
+        margin-bottom: 20px;
+    }
 }
