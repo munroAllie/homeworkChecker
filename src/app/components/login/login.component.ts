@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   private email:string;
   private password:string;
-
+  private errorMessage:string;
+  
   constructor(
     private firebaseSerice:FirebaseService,
     private authService:AuthService,
@@ -37,7 +38,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.authService.login(this.email,this.password)
+    this.authService.login(this.email,this.password).then( (res) =>{
+      console.log(res)
+    })
+    .catch( (err)=>{
+      this.errorMessage = err.message;
+      console.log(err.message);
+    })
     
   }
 

@@ -11,6 +11,7 @@
             <input type="email" class="form-control" [(ngModel)]="email" name="inputmail" placeholder="E-Mail" required>
             <label for="inputEmail">Password</label>
             <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" name="password" required>
+            <div class="message">{{errorMessage}}</div>
             <div class="btn btn-confirm" (click)=login()>Login</div>
             <div class="btn btn-confirm" (click)=goToRegister()>Register</div>
           <hr>

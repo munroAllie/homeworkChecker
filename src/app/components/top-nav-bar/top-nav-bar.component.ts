@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class TopNavBarComponent implements OnInit {
   private menuToggle:boolean = false;
   private userName:string;
+
   constructor(
     private firebaseService:FirebaseService,
     private authService:AuthService,
@@ -32,7 +33,8 @@ export class TopNavBarComponent implements OnInit {
   getUserName(){
     this.authService.afAuth.authState.subscribe(val=>{
       if(val){
-      this.userName = val.displayName;
+        console.log(val)
+      this.userName = val.email;
       }
     })
   }

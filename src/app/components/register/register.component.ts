@@ -11,14 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  public user$ = this.authService.user;
-  public isLoggedIn:boolean;
-
+  private errorMessage:string = "";
   private email:string;
   private password:string;
 
   constructor(
-    private firebaseSerice:FirebaseService,
+    private firebaseService:FirebaseService,
     private authService:AuthService,
     private router:Router
  
@@ -33,5 +31,17 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  register(){
+    this.authService.register(this.email,this.password).then( (res) =>{
+      console.log(res)
+    })
+    .catch( (err)=>{
+      this.errorMessage = err.message;
+      console.log(err.message);
+    })
+  }
+  login(){
+    this.router.navigate(['login']);
+  }
 
 }

@@ -61,7 +61,14 @@ export class DashboardComponent implements OnInit {
     private firebaseService: FirebaseService,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) { 
+    this.authService.isAuthenticated().subscribe(
+      success => { 
+      if(!success) {
+        this.router.navigate(['login']);
+        }
+      })
+  }
 
 
   ngOnInit() {
