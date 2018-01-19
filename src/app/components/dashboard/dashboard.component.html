@@ -227,7 +227,7 @@
       </div>
       <div class="col-sm-6">
         <div class="rating-wrapper">
-          <span class="rating pull-right" (mouseenter)="studentInfoModalPopUpShow = true" (mouseleave)="studentInfoModalPopUpShow = false" >{{percentage}} </span>
+          <span class="rating pull-right" (mouseenter)="studentInfoModalPopUpShow = true" (mouseleave)="studentInfoModalPopUpShow = false" >{{percentage}}% </span>
           <div class="menu" *ngIf="studentInfoModalPopUpShow == true">
             <div class="card">
               <div class="amount">{{studentMarkedForInfo.completed+studentMarkedForInfo.incompleted}} Total Assignments</div>
