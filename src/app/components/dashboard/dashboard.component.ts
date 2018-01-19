@@ -42,8 +42,11 @@ export class DashboardComponent implements OnInit {
   private toasts: toasts[] = [];
 
   private homeworkValidated: boolean = true;
+  private homeworkPristine:boolean = true;
+
   private addStudentFormValidated:boolean = true;
-  private percentage:number;
+  private percentage:any;
+  private studentInfoModalPopUpShow:boolean = false;
 
   dashboardState: string = "default";
   addStudentState: boolean = false;
@@ -58,7 +61,14 @@ export class DashboardComponent implements OnInit {
     private firebaseService: FirebaseService,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) { 
+    this.authService.isAuthenticated().subscribe(
+      success => { 
+      if(!success) {
+        this.router.navigate(['login']);
+        }
+      })
+  }
 
 
   ngOnInit() {
@@ -181,7 +191,11 @@ export class DashboardComponent implements OnInit {
 
   markStudentForInfo(student: studentInfo) {
     this.studentMarkedForInfo = student;
+    if((this.studentMarkedForInfo.completed + this.studentMarkedForInfo.incompleted)==0){
+      this.percentage = "N/A";
+    }else{
     this.percentage = Math.round(this.studentMarkedForInfo.completed / (this.studentMarkedForInfo.completed + this.studentMarkedForInfo.incompleted)*100)
+    }
     this.firebaseService.afAuth.authState.subscribe(val => {
       this.firebaseService.getAssignments(val.uid, this.studentMarkedForInfo).valueChanges().subscribe(val => {
         this.assignments = val;
@@ -222,7 +236,7 @@ export class DashboardComponent implements OnInit {
 
   validateHomework() {
     this.homeworkValidated=true;
-    for (var i = 1; i <= this.students.length - 1; i++) {
+    for (var i = 0; i <= this.students.length - 1; i++) {
       if (this.students[i].status=="") {
         this.homeworkValidated = false;
       }
@@ -232,6 +246,26 @@ export class DashboardComponent implements OnInit {
       this.homeworkValidated = false;
       
     }
+  }
+
+  checkHomeworkPristine(){
+      for(var i = 0; i<= this.students.length -1; i++){
+        if(this.students[i].status!=""){
+          this.homeworkPristine = false;
+        } 
+      }
+      if(this.descriptionText!=""){
+        this.homeworkPristine = false;
+      }
+      if(this.homeworkPristine == false){
+        this.dashboardState='cancelHomeworkModal'
+        this.homeworkPristine= true;
+      }
+      else{
+        this.dashboardState='default'
+        this.homeworkPristine= true;
+      }
+    
   }
 
 }

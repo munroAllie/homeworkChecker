@@ -10,20 +10,13 @@
           <div class="form-wrapper">
             <label for="inputEmail">Email Address</label>
             <input type="email" class="form-control" [(ngModel)]="email" name="inputEmail" placeholder="E-Mail" required autocomplete="new-password" autocomplete="off">
-            <label for="password">Password</label>
+            <label for="inputEmail">Password</label>
             <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" name="password" required autocomplete="new-password" autocomplete="off">
             <div class="message">{{errorMessage}}</div>
-            <div class="btn btn-confirm" (click)=login()>Login</div>
-            <div class="btn btn-outline-primary" (click)=goToRegister()>Register</div>
+            <div class="btn btn-confirm" (click)=register()>Sign Up</div>
             <hr>
-            
-            <div class="textOr">Or</div>
-            <div class="googleSignIn">
-              <div class="icon-wrapper">
-                <img id="googleIcon" src="../../assets/images/google-icon.svg" alt="">
-              </div>
-              <div class="googleText" (click)="loginWithGoogle()">Sign in with Google</div>
-            </div>
+            <div class="textOr">Already have an account?</div>
+            <div class="btn btn-outline-primary" (click)=login()>Login</div>
           </div>
         </div>
       </div>

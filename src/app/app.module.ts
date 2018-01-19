@@ -17,6 +17,7 @@ import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.compone
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { DashboardComponent} from './components/dashboard/dashboard.component';
 import { ClickOutsideModule } from 'ng4-click-outside';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -30,6 +31,7 @@ const appRoutes:Routes =[
   },
   { path: 'login', component: LoginComponent},
   { path: '',   redirectTo: '/mainPage', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent}
 ]
 
 const firebaseConfig ={
@@ -48,7 +50,8 @@ const firebaseConfig ={
     SideNavBarComponent,
     TopNavBarComponent,
     MainPageComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterComponent
 
   ],
   imports: [

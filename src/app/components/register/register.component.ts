@@ -6,20 +6,17 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
-  public user$ = this.authService.user;
-  public isLoggedIn:boolean;
-
+export class RegisterComponent implements OnInit {
+  private errorMessage:string = "";
   private email:string;
   private password:string;
-  private errorMessage:string;
-  
+
   constructor(
-    private firebaseSerice:FirebaseService,
+    private firebaseService:FirebaseService,
     private authService:AuthService,
     private router:Router
  
@@ -33,23 +30,18 @@ export class LoginComponent implements OnInit {
     }
   ngOnInit() {
   }
-  loginWithGoogle(){
-    this.authService.loginWithGoogle();
-  }
 
-  login(){
-    this.authService.login(this.email,this.password).then( (res) =>{
+  register(){
+    this.authService.register(this.email,this.password).then( (res) =>{
       console.log(res)
     })
     .catch( (err)=>{
       this.errorMessage = err.message;
       console.log(err.message);
     })
-    
   }
-
-  goToRegister(){
-    this.router.navigate(['register']);
+  login(){
+    this.router.navigate(['login']);
   }
 
 }

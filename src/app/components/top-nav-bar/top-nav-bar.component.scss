@@ -19,12 +19,15 @@
 }
 
 .menu {
+    i{
+        cursor: pointer;
+    }
     position: absolute;
     color: #fff;
     right: 25px;
     top: 10px;
     text-align: right;
-    z-index: 999;
+    z-index: 1010;
     .card{
         position: relative;
         right: -30px;
@@ -32,11 +35,21 @@
         text-align: left;
         padding: 10px;
     }
-    .btn-primary{
-        text-align: left;
+    .btn-outline-primary{
+        border: none;
+        text-align: center;
+        font-size: 12px;
+        color: $secondary;
+        line-height: 12px;
+        width: 150px;
+        height:30px;
+    }
+    .btn-outline-primary:hover{
+        border: none;
+        text-align: center;
         font-size: 12px;
         color: #fff;
-        line-height: 11px;
+        line-height: 12px;
         width: 150px;
         height:30px;
     }

@@ -185,7 +185,7 @@
     <div class="btn btn-confirm" (click)="recordStudents()">Save
       <i class="fa fa-save" aria-hidden="true"></i>
     </div>
-    <div class="btn btn-cancel" (click)="dashboardState='default'" (click)="dashboardState='cancelHomeworkModal'">Cancel
+    <div class="btn btn-cancel" (click)="dashboardState='default'" (click)="checkHomeworkPristine()">Cancel
       <i class="fa fa-save" aria-hidden="true"></i>
     </div>
   </div>
@@ -194,9 +194,9 @@
   <div class="toast-wrapper">
     <div class="toastLoopWrapper" *ngFor="let toast of toasts; index as i">
       <div class="toast" [ngClass]="{positive:toast.type}">
-        <i class="fa fa-close" (click)="removeToastByIndex(i)" *ngIf="!toast.type" aria-hidden="true"></i>
+        <i class="fa fa-close" (click)="removeToastByIndex(i)" *ngIf="toast.type" aria-hidden="true"></i>
         <div class="description">{{toast.message}}</div>
-        <div class="action" (click)="removeToastByIndex(i)" *ngIf="!toast.type">Dismiss</div>
+        <div class="action" (click)="removeToastByIndex(i)" *ngIf="toast.type">Dismiss</div>
       </div>
     </div>
   </div>
@@ -227,8 +227,8 @@
       </div>
       <div class="col-sm-6">
         <div class="rating-wrapper">
-          <span class="rating pull-right"> 50% </span>
-          <div class="menu">
+          <span class="rating pull-right" (mouseenter)="studentInfoModalPopUpShow = true" (mouseleave)="studentInfoModalPopUpShow = false" >{{percentage}}% </span>
+          <div class="menu" *ngIf="studentInfoModalPopUpShow == true">
             <div class="card">
               <div class="amount">{{studentMarkedForInfo.completed+studentMarkedForInfo.incompleted}} Total Assignments</div>
               <hr>
