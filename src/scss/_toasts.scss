@@ -16,6 +16,7 @@
             display: inline-block;
             line-height: 50px;
             vertical-align: middle;
+            cursor:pointer;
             
         }
         .description {
@@ -25,6 +26,7 @@
             vertical-align: middle; 
         }
         .action {
+            cursor:pointer;
             display: inline-block;
             text-decoration: underline;
             line-height: 50px;

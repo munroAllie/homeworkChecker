@@ -194,9 +194,9 @@
   <div class="toast-wrapper">
     <div class="toastLoopWrapper" *ngFor="let toast of toasts; index as i">
       <div class="toast" [ngClass]="{positive:toast.type}">
-        <i class="fa fa-close" (click)="removeToastByIndex(i)" *ngIf="!toast.type" aria-hidden="true"></i>
+        <i class="fa fa-close" (click)="removeToastByIndex(i)" *ngIf="toast.type" aria-hidden="true"></i>
         <div class="description">{{toast.message}}</div>
-        <div class="action" (click)="removeToastByIndex(i)" *ngIf="!toast.type">Dismiss</div>
+        <div class="action" (click)="removeToastByIndex(i)" *ngIf="toast.type">Dismiss</div>
       </div>
     </div>
   </div>
