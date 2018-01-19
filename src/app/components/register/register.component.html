@@ -1,0 +1,27 @@
+<div class="loginWrapper">
+    <div class="container">
+      <div class="row ">
+        <div class="col-md-8 offset-sm-2">
+          <div class="card card-form">
+            <div class="logo-container text-centered">
+              <img class="img-fluid logo" src="assets/images/logo.png" alt="">
+            </div>
+            <div class="logo-text">HOMEWORK CHECKER</div>
+              <label for="inputEmail">Email Address</label>
+              <input type="email" class="form-control" [(ngModel)]="email" name="inputmail" placeholder="E-Mail" required>
+              <label for="inputEmail">Password</label>
+              <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" name="password" required>
+              <div class="btn btn-confirm" (click)=login()>Login</div>
+              <div class="btn btn-confirm" (click)=goToRegister()>Register</div>
+            <hr>
+            <div class="textOr">Or</div>
+            <div class="googleSignIn">
+              <div class="icon-wrapper">
+                <img id="googleIcon" src="../../assets/images/google-icon.svg" alt="">
+              </div>
+              <div class="googleText" (click)="loginWithGoogle()">Sign in with Google</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

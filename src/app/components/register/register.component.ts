@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   public user$ = this.authService.user;
   public isLoggedIn:boolean;
 
@@ -32,17 +32,6 @@ export class LoginComponent implements OnInit {
     }
   ngOnInit() {
   }
-  loginWithGoogle(){
-    this.authService.loginWithGoogle();
-  }
 
-  login(){
-    this.authService.login(this.email,this.password)
-    
-  }
-
-  goToRegister(){
-    this.router.navigate(['register']);
-  }
 
 }
