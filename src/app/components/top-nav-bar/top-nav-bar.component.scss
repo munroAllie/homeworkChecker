@@ -32,11 +32,21 @@
         text-align: left;
         padding: 10px;
     }
-    .btn-primary{
-        text-align: left;
+    .btn-outline-primary{
+        border: none;
+        text-align: center;
+        font-size: 12px;
+        color: $secondary;
+        line-height: 12px;
+        width: 150px;
+        height:30px;
+    }
+    .btn-outline-primary:hover{
+        border: none;
+        text-align: center;
         font-size: 12px;
         color: #fff;
-        line-height: 11px;
+        line-height: 12px;
         width: 150px;
         height:30px;
     }
