@@ -3,6 +3,8 @@
 ### What is it?
 
 HomeworkCheck is a web application that allows the user to track students homework in a user friendy interface. 
+![Image 1](https://github.com/JohnMunro/homeworkChecker/blob/development/src/assets/images/readmeImage1.png)
+![Image 2](https://github.com/JohnMunro/homeworkChecker/blob/development/src/assets/images/readmeImage2.png)
 
 ### Features
 
