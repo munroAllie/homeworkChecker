@@ -18,7 +18,7 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     public af: AngularFireDatabase,
-    private router: Router) {
+    public  router: Router) {
     this.user = afAuth.authState;
 
   }

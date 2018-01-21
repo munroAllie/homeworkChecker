@@ -14,14 +14,14 @@ export class LoginComponent implements OnInit {
   public user$ = this.authService.user;
   public isLoggedIn:boolean;
 
-  private email:string;
-  private password:string;
-  private errorMessage:string;
+  public email:string;
+  public password:string;
+  public errorMessage:string;
   
   constructor(
-    private firebaseSerice:FirebaseService,
-    private authService:AuthService,
-    private router:Router
+    public firebaseSerice:FirebaseService,
+    public authService:AuthService,
+    public router:Router
  
   ) {
     this.authService.isAuthenticated().subscribe(

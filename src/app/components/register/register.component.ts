@@ -11,14 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  private errorMessage:string = "";
-  private email:string;
-  private password:string;
+  public errorMessage:string = "";
+  public email:string;
+  public password:string;
 
   constructor(
-    private firebaseService:FirebaseService,
-    private authService:AuthService,
-    private router:Router
+    public firebaseService:FirebaseService,
+    public authService:AuthService,
+    public router:Router
  
   ) {
     this.authService.isAuthenticated().subscribe(

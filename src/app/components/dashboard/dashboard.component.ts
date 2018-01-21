@@ -24,9 +24,9 @@ export class DashboardComponent implements OnInit {
   @ViewChild('studentParentEmail') formStudentParentEmail;
 
   @ViewChild('description') description;
-  private studentMarkedForDeletion: studentInfo;
-  private studentMarkedForInfo: studentInfo;
-  private studentInfo: studentInfo = {
+  public studentMarkedForDeletion: studentInfo;
+  public studentMarkedForInfo: studentInfo;
+  public studentInfo: studentInfo = {
     firstName: "",
     lastName: "",
     teacher: "",
@@ -38,29 +38,29 @@ export class DashboardComponent implements OnInit {
     edit: false,
     status: ""
   }
-  private assignments: any[];
-  private toasts: toasts[] = [];
+  public assignments: any[];
+  public toasts: toasts[] = [];
 
-  private homeworkValidated: boolean = true;
-  private homeworkPristine:boolean = true;
+  public homeworkValidated: boolean = true;
+  public homeworkPristine:boolean = true;
 
-  private addStudentFormValidated:boolean = true;
-  private percentage:any;
-  private studentInfoModalPopUpShow:boolean = false;
+  public  addStudentFormValidated:boolean = true;
+  public percentage:any;
+  public studentInfoModalPopUpShow:boolean = false;
 
-  dashboardState: string = "default";
-  addStudentState: boolean = false;
-  trackingState: boolean = false;
-  createAssignmentState: boolean = false;
-  isLoggedIn: boolean; //Holds the boolean for if the user is logged in
-  students: studentInfo[];
-  track: Subscription;
-  descriptionText: string = ""; //Description text for the homework input field
-  sub: Subscription;
+  public dashboardState: string = "default";
+  public addStudentState: boolean = false;
+  public trackingState: boolean = false;
+  public createAssignmentState: boolean = false;
+  public isLoggedIn: boolean; //Holds the boolean for if the user is logged in
+  public students: studentInfo[];
+  public track: Subscription;
+  public descriptionText: string = ""; //Description text for the homework input field
+  public sub: Subscription;
   constructor(
-    private firebaseService: FirebaseService,
-    private authService: AuthService,
-    private router: Router
+    public firebaseService: FirebaseService,
+    public authService: AuthService,
+    public router: Router
   ) { 
     this.authService.isAuthenticated().subscribe(
       success => { 

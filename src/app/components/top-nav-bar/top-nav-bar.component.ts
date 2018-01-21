@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-nav-bar.component.scss']
 })
 export class TopNavBarComponent implements OnInit {
-  private menuToggle:boolean = false;
-  private userName:string;
+  public menuToggle:boolean = false;
+  public userName:string;
 
   constructor(
-    private firebaseService:FirebaseService,
-    private authService:AuthService,
-    private router:Router
+    public firebaseService:FirebaseService,
+    public authService:AuthService,
+    public router:Router
   ) { }
 
   ngOnInit() {
