@@ -1,0 +1,21 @@
+<div class="header-bar">
+    <div class="brand">
+        <a  href="#">
+            <img src="../assets/images/Brand.png"  alt="">
+          </a>
+    </div>
+    <div class="menu" (clickOutside)="onClickedOutside($event)">
+        <i class="fa fa-user-circle" aria-hidden="true"(click)='menuToggle=!menuToggle'></i>
+        <div class="card" *ngIf='menuToggle'>
+            <div class="username">
+                {{userName}}
+            </div>
+            <hr>
+            <div class="btn btn-outline-primary" (click)="logout()" >
+                Logout
+            </div>    
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,294 @@
+@import '../../../styles.scss';
+.dashboard-background{
+    height: 100vh;
+    width: 100%;
+    background-color: #d3d3d3;
+    overflow: auto;
+}
+td .tooltip  {
+    position:absolute
+}
+.card-title{
+    height: 24px;	
+    width: auto;	
+    color: #1B1B1B;	
+    font-family: Helvetica;	
+    font-size: 20px;	
+    font-weight: 300;	
+    line-height: 24px;
+    margin-bottom: 0;
+    margin-top: 6px;
+}
+.utility-buttons{
+    margin-bottom:30px;
+    .btn{
+        margin-left:1em;
+        font-size: 18px;    
+        padding: 5px 10px;
+    }
+}
+.search{
+    margin-bottom:30px;
+    i {
+        margin-left: 1em;
+    }
+
+}
+.table{
+    th{
+        border-top: 0px;
+        padding-bottom: 3px;
+        
+    }
+    input {
+        width: 100%;
+    }
+}
+.descriptionTitle{
+    font-size:14px;
+    color: #1C1C1C;
+}
+.descriptionField{
+    width:500px;
+}
+.danger{
+    color:red;
+}
+
+.table{
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.btn-action{
+    width: 90px;
+    .fa{
+        margin-left:15px;
+    }
+}
+.confirm-cancel-btns{
+    width: 100%;
+
+
+    .btn{
+        font-size: 12px;  
+        padding: 3px 6px;
+    }
+    .btn, .btn-cancel, .btn-confirm {
+        display: inline-block;
+    }
+}
+
+.last-row {
+    background-color: purple;
+}
+
+.track-homework-actions {
+    color: $dark-gray;
+    input {
+       // display: none;
+    }
+    .fa-minus.selected{
+            color: $secondary;
+    }
+    .fa-check.selected{
+            color: $primary;
+    }
+    .fa-close.selected{
+            color: $cancel;
+    }
+    .fa-minus:hover {
+        color: $secondary;
+        cursor: pointer;
+    }
+    .fa-check:hover {
+        color: $primary;
+        cursor: pointer;
+    }
+    .fa-close:hover {
+       color: $cancel;
+       cursor: pointer;
+    }
+    
+}
+.tracking-action-buttons{
+    margin-left:15px;
+}
+
+.info-modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+    .fa-minus{
+        color: $secondary;
+    }
+    .fa-check{
+        color: $primary;
+    }
+    .fa-close{
+        color: $cancel;
+    }
+    th {
+        border-top: 0px;
+        padding-bottom: 3px;
+    }
+    .modal-background{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        overflow: auto;
+    }
+    .modal-card {
+        animation-name: fadeinfromtop;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        display: block;
+        margin: 0 auto;
+        margin-top: 100px;
+        max-width: 520px;
+        padding: 8px 26px;
+    }
+    .card-title {
+            font-size: 18px;
+    }
+    .rating {
+            color: #F5A623;
+            font-size: 21px;
+            font-weight: bold;
+            .popup{
+                position: relative;
+            }
+    }   
+}
+
+
+.delete-student-modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+    .fa{
+        margin-right:15px;
+    }
+    th {
+        border-top: 0px;
+        padding-bottom: 3px;
+    }
+    .modal-background{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        overflow: auto;
+    }
+    .modal-card {
+        animation-name: fadeinfromtop;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        display: block;
+        margin: 0 auto;
+        margin-top: 100px;
+        max-width: 520px;
+        padding: 8px 26px;
+    }
+    .card-title {
+            color: #F5A623;
+            font-size: 24px;  
+            margin-bottom:17px;   
+    }
+    .rating {
+            color: #F5A623;
+            font-size: 21px;
+            font-weight: bold;
+            .popup{
+                position: relative;
+            }
+    }
+    .modal-description{
+            color: #1C1C1C;
+            font-size: 18px;
+            margin-bottom:60px;
+    }
+    .blank{
+        color: #1C1C1C;;
+        background-color: transparent;
+        border: none;
+        font-size: 18px;
+        margin-left:10px;
+    }  
+    .blank:hover{
+        color:  #1C1C1C;;
+        background-color: transparent;
+        border-color: #1C1C1C;;
+
+    }
+    .btn-cancel{
+        border-radius: 0px;
+        color: #FFFFFF;	
+        font-size: 18px;	
+        padding: 0px 24px;
+    } 
+}
+
+.required {
+    color: red;
+}
+
+.button-row:hover {
+    cursor: pointer;
+    background-color: lighten($dark-gray, 60);
+}
+.unclickable:hover{
+    cursor: auto;
+}
+
+.button-column-unclickable {
+    cursor: auto;
+}
+
+.add-student-confirm-cancel-btns{
+    position: relative;
+    bottom: -25px;
+
+}
+form{
+    .fa-warning{
+        color: red;
+    }
+}
+span {
+    &.rating {
+    cursor: pointer;
+    }   
+}
+
+.rating-wrapper{
+    .menu{
+    position: absolute;
+    z-index: 800;
+    right: 0;
+    top: 20px;
+    }
+    .card {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.2);
+    }
+}
+
+.info-modal-wrapper {
+    .card-title {
+        margin-bottom: 20px;
+    }
+}
+

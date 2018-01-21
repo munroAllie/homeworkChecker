@@ -1,6 +1,7 @@
+import { isSuccess } from '@angular/http/src/http_utils';
 import { FirebaseService } from '../../services/firebase.service';
+import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
 import { Router } from '@angular/router';
 
 
@@ -10,30 +11,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  public user$ = this.authService.user;
+  public isLoggedIn:boolean;
+
   private email:string;
   private password:string;
+  private errorMessage:string;
   
   constructor(
     private firebaseSerice:FirebaseService,
-    private flashMessagesService:FlashMessagesService,
+    private authService:AuthService,
     private router:Router
  
-  ) { }
-
+  ) {
+    this.authService.isAuthenticated().subscribe(
+      success => { 
+      if(success) {
+        this.router.navigate(['mainPage']);
+        }
+      })
+    }
   ngOnInit() {
   }
+  loginWithGoogle(){
+    this.authService.loginWithGoogle();
+  }
 
-  onSubmit()
-  {
-    this.firebaseSerice.login(this.email,this.password)
-    .then( (user) => {
-      this.flashMessagesService.show('You are logged in as '+ user.email, {cssClass:'alert-success', timeout:4000});
-      this.router.navigate(["/"]); 
+  login(){
+    this.authService.login(this.email,this.password).then( (res) =>{
+      console.log(res)
     })
-    .catch( (e) => {
-      this.flashMessagesService.show(e.message, {cssClass:'alert-danger', timeout:4000});
-      this.router.navigate(["login"]); 
-    });
+    .catch( (err)=>{
+      this.errorMessage = err.message;
+      console.log(err.message);
+    })
+    
+  }
+
+  goToRegister(){
+    this.router.navigate(['register']);
   }
 
 }

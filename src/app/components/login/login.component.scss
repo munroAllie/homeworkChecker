@@ -1,0 +1,139 @@
+@import '../../../scss/variables.scss';
+
+.loginWrapper {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0deg, #52B678 0%, #8FC7AF 100%);
+    .form-control{
+        width:100%;
+        margin-bottom:15px;
+    }
+    .form-wrapper{
+        margin: 0 auto;
+        width:60%;
+        label{
+            margin-bottom:5px;
+            display: Block;
+        }
+        .btn{
+            display:Block;
+        }
+        .btn-outline-primary{
+            color: $primary;
+            border: none;
+        }
+        .btn-outline-primary:hover{
+            color: #fff;
+            border: none;
+            background-color: $primary;
+        }
+        .message{
+            color:red;
+        }
+    }
+
+    .textOr{
+        display: block;
+        text-align: center;
+        color:#616161;
+
+    }
+
+    .btn{
+        margin-bottom: 10px;
+    }
+}
+.card-form {
+    margin-top: 105px;
+    padding: 2em;
+    border-radius: 8px;
+}
+
+.form-header {
+    margin-top: 0px;
+}
+h1.logoText {
+    height: 58px;	
+    width: 547px;	
+    color: #616161;	
+    font-family: Helvetica;	
+    font-size: 32px;	
+    font-weight: bold;	
+    line-height: 58px;
+}
+.logo-container {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 100%;
+    margin: 0 auto;
+    margin-top: -85px
+}
+.logo {
+    display: block;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-right: 17px;
+}
+.logo-text {	
+    color: #616161;	
+    font-family: Helvetica;
+    font-size: 2.25em;	
+    font-weight: bold;	
+    margin: 0 auto;
+    margin-top: -65px;
+}
+
+.googleSignIn{ 
+    cursor: pointer;
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: $google-red;
+    transition-duration: 0.2s;
+}
+
+.googleSignIn:hover{
+    transition-duration: 0.2s;
+    border-color: $dark-gray;
+    box-shadow: 2px 2px 4px rgba( 0,0,0, 0.2);
+    .icon-wrapper{
+        border-color: $dark-gray;
+        transition-duration: 0.2s;
+    }
+    .googleText{
+        background-color: $dark-gray;
+        transition-duration: 0.2s;
+    }
+}
+
+.icon-wrapper {
+    padding: 5px;
+    border-color: $google-red;
+    border-right-style: solid;
+    border-width: 1px;
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+#googleIcon{
+    width: 25px;
+}
+
+.googleText{
+    text-align: center;
+    padding: 8px;
+    background: $google-red;
+    color: white;
+    height: 100%;
+    width: calc(100% - 50px);
+    overflow: hidden;
+    float: right;
+}

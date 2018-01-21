@@ -1,0 +1,57 @@
+
+.form-control {
+    border-radius: 0px;
+    border-width: 0px;
+    border-bottom-width: 4px;
+    background-color: $light-gray;	
+    color: $dark-gray;	
+    font-family: Helvetica;	
+    margin: 0;
+    display: inline-block;
+    width: auto;
+    height: 2em;
+}
+
+.form-control::placeholder {
+    color: $dark-gray;
+}
+
+.form-control:focus {
+    border-radius: 0px;
+    border-width: 0px;
+    border-bottom-width: 4px;
+    border-color: $primary;
+    background-color: $light-gray;
+    i {
+        color: $primary;
+    } //i
+}
+form.form-signin {
+    label { 
+        display: none
+    }
+}
+
+.no-label {
+    label {
+            display: none;
+    }
+}
+    
+span.input-group-addon {
+    background-color: transparent;
+    border: none;
+}
+
+.input-group { 
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.input-group-addon i {
+    color: $dark-gray;
+    &.fa {
+        margin: 0 auto;
+        font-size: 1.25em;
+    }
+}

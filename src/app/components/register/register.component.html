@@ -1,0 +1,24 @@
+<div class="loginWrapper">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-8 offset-sm-2">
+        <div class="card card-form">
+          <div class="logo-container text-centered">
+            <img class="img-fluid logo" src="assets/images/logo.png" alt="">
+          </div>
+          <div class="logo-text">HOMEWORK CHECKER</div>
+          <div class="form-wrapper">
+            <label for="inputEmail">Email Address</label>
+            <input type="email" class="form-control" [(ngModel)]="email" name="inputEmail" placeholder="E-Mail" required autocomplete="new-password" autocomplete="off">
+            <label for="inputEmail">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" name="password" required autocomplete="new-password" autocomplete="off">
+            <div class="message">{{errorMessage}}</div>
+            <div class="btn btn-confirm" (click)=register()>Sign Up</div>
+            <hr>
+            <div class="textOr">Already have an account?</div>
+            <div class="btn btn-outline-primary" (click)=login()>Login</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

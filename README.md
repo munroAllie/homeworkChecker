@@ -1,28 +1,53 @@
-# HomeworkChecker
+# Homework Checker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
+### What is it?
 
-## Development server
+HomeworkCheck is a web application that allows the user to track student homework in a user friendy interface. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![readmeimage1](https://user-images.githubusercontent.com/5952902/35198026-06c2e284-febf-11e7-9654-5d02995f81c2.png)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Features
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+  - Add new students.
+  - Edit student names and add additonal information.
+  - Delete students.
+  - Track homework and give the homework a name.
+  - View the history of each student's homework.
+  - View a homework score for each student.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### You can also:
+  - View the history of each student's homework.
+  - View a homework score for each student.
 
-## Running end-to-end tests
+### How was it made?
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Homework checker uses:
 
-## Further help
+* [Angular] - HTML enhanced for web apps
+* [Bootstrap] - great UI boilerplate for modern web apps
+* [Firebase] - noSQL database
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Installation
+Open a command line, copy and paste the following. Press enter to excute the last line "npm start" after all of the previous commands have finished. It will take a couple of minutes to install of the necessary files.
+```sh
+git clone https://github.com/JohnMunro/homeworkChecker
+cd homeworkChecker
+npm install
+npm start
+```
+One everything has completed open up a brower and go to http://localhost:4200/ and enjoy.
+
+### Features to add
+- The ability to add classrooms
+- Option to change the name of the assignment after it has been created
+- Change the status of a student's homework after it has been tracked
+
+
+
+   [Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [Angular]: <https://angular.io/>
+   [Firebase]: <https://firebase.google.com/>
+    
