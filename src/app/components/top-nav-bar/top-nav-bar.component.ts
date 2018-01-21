@@ -33,7 +33,7 @@ export class TopNavBarComponent implements OnInit {
   getUserName(){
     this.authService.afAuth.authState.subscribe(val=>{
       if(val){
-        console.log(val)
+ 
       this.userName = val.email;
       }
     })
