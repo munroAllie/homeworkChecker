@@ -2,7 +2,7 @@
 
 ### What is it?
 
-HomeworkCheck is a web application that allows the user to track student homework in a user friendy interface. You visit the web * [here]. *There is a known issues with google single sign on when the app is deployed on heroku. To use the homework checker app register an account.*
+HomeworkCheck is a web application that allows the user to track student homework in a user friendy interface. You visit the web [here]. *There is a known issues with google single sign-on when the app is deployed on heroku. To use the homework checker app register an account.*
 
 ![signon](https://user-images.githubusercontent.com/5952902/35198124-59e6b494-fec0-11e7-9ccf-6a2175ab222f.png)
 ![readmeimage1](https://user-images.githubusercontent.com/5952902/35198026-06c2e284-febf-11e7-9654-5d02995f81c2.png)
@@ -51,4 +51,4 @@ One everything has completed open up a brower and go to http://localhost:4200/ a
    [Bootstrap]: <http://twitter.github.com/bootstrap/>
    [Angular]: <https://angular.io/>
    [Firebase]: <https://firebase.google.com/>
-   [here]: <https://homework-checker-webapp.herokuapp.com/login>
+   [here]: <https://homework-checker-webapp.herokuapp.com>
